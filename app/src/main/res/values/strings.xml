@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">MyWay</string>
+    <string name="choose_country">Choose Country</string>
+    <string name="egypt">Egypt</string>
+    <string name="saudia">Saudia</string>
+    <string name="product">Product</string>
+    <string name="news">News</string>
+    <string name="catalouge">Catalouge</string>
+    <string name="cadua">Cadua</string>
+    <string name="offers">Offers</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="work_setting">Work Setting</string>
+    <string name="join_my_way_company">Join My Way Company</string>
+</resources>
