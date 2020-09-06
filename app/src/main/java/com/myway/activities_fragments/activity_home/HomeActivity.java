@@ -273,21 +273,10 @@ public class HomeActivity extends AppCompatActivity {
     private void back() {
         if (fragment_main != null && fragment_main.isAdded() && fragment_main.isVisible()) {
 
-            if (userModel != null) {
-                if (fragment_main.behavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
 
-                    fragment_main.behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                } else {
                     finish();
-                }
-            } else {
-                if (fragment_main.behavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
 
-                    fragment_main.behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                } else {
-                    //  navigateToSignInActivity();}
-                }
-            }
+
         } else {
             displayFragmentMain();
         }
