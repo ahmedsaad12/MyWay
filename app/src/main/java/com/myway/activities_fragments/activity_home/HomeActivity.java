@@ -16,9 +16,12 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentManager;
 
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.SimpleTarget;
@@ -26,17 +29,16 @@ import com.bumptech.glide.request.transition.Transition;
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
-import com.v60BNS.R;
-import com.v60BNS.activities_fragments.activity_cart.CartActivity;
-import com.v60BNS.activities_fragments.activity_home.fragments.Fragment_Add;
-import com.v60BNS.activities_fragments.activity_home.fragments.Fragment_Comments;
-import com.v60BNS.activities_fragments.activity_home.fragments.Fragment_Main;
-import com.v60BNS.activities_fragments.activity_home.fragments.Fragment_Profile;
-import com.v60BNS.activities_fragments.activity_home.fragments.Fragment_Store;
-import com.v60BNS.databinding.ActivityHomeBinding;
-import com.v60BNS.language.Language;
-import com.v60BNS.models.UserModel;
-import com.v60BNS.preferences.Preferences;
+import com.myway.R;
+import com.myway.activities_fragments.activity_home.fragments.Fragment_Catalouge;
+import com.myway.activities_fragments.activity_home.fragments.Fragment_Contact_Manger;
+import com.myway.activities_fragments.activity_home.fragments.Fragment_Dowanlod;
+import com.myway.activities_fragments.activity_home.fragments.Fragment_Main;
+import com.myway.databinding.ActivityHomeBinding;
+import com.myway.language.Language;
+import com.myway.models.UserModel;
+import com.myway.preferences.Preferences;
+
 
 import io.paperdb.Paper;
 
@@ -46,10 +48,9 @@ public class HomeActivity extends AppCompatActivity {
     private Preferences preferences;
     private FragmentManager fragmentManager;
     private Fragment_Main fragment_main;
-    private Fragment_Store fragment_store;
-    private Fragment_Add fragment_add;
-    private Fragment_Comments fragment_comments;
-    private Fragment_Profile fragment_profile;
+    private Fragment_Dowanlod fragment_dowanlod;
+    private Fragment_Catalouge fragment_catalouge;
+    private Fragment_Contact_Manger fragment_contact_manger;
     private UserModel userModel;
     private String lang;
     private String token;
@@ -66,7 +67,6 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home);
         initView();
-        setimage();
         if (savedInstanceState == null) {
             displayFragmentMain();
         }
@@ -79,185 +79,61 @@ public class HomeActivity extends AppCompatActivity {
         userModel = preferences.getUserData(this);
         Paper.init(this);
         lang = Paper.book().read("lang", "ar");
-        binding.setLang(lang);
+        setUpBottomNavigation();
 
-        binding.bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()) {
-                    case R.id.home:
-                        displayFragmentMain();
-                        break;
-                    case R.id.store:
-                        displayFragmentStore();
-                        break;
-                    case R.id.add:
-                        displayFragmentAddPost();
-                        break;
-                    case R.id.comments:
-                        displayFragmentComments();
-                        break;
-                    case R.id.profile:
-                        displayFragmentProfile();
-                        break;
-                }
 
-                return true;
+    }
+
+
+    private void setUpBottomNavigation() {
+
+        AHBottomNavigationItem item1 = new AHBottomNavigationItem(getString(R.string.home), R.drawable.ic_search);
+        AHBottomNavigationItem item2 = new AHBottomNavigationItem(getString(R.string.store), R.drawable.ic_search);
+        AHBottomNavigationItem item3 = new AHBottomNavigationItem(getString(R.string.catalouge), R.drawable.ic_search);
+        AHBottomNavigationItem item4 = new AHBottomNavigationItem(getString(R.string.contact_manger), R.drawable.ic_search);
+
+        binding.ahBottomNav.setTitleState(AHBottomNavigation.TitleState.ALWAYS_SHOW);
+        binding.ahBottomNav.setDefaultBackgroundColor(ContextCompat.getColor(this, R.color.color3));
+        binding.ahBottomNav.setTitleTextSizeInSp(13, 13);
+        binding.ahBottomNav.setForceTint(true);
+        binding.ahBottomNav.setAccentColor(ContextCompat.getColor(this, R.color.colorPrimary));
+        binding.ahBottomNav.setInactiveColor(ContextCompat.getColor(this, R.color.white));
+
+        binding.ahBottomNav.addItem(item1);
+        binding.ahBottomNav.addItem(item2);
+        binding.ahBottomNav.addItem(item3);
+        binding.ahBottomNav.addItem(item4);
+
+
+        binding.ahBottomNav.setOnTabSelectedListener((position, wasSelected) -> {
+
+
+            switch (position) {
+                case 0:
+                    displayFragmentMain();
+                    break;
+                case 1:
+                    displayFragmentDownload();
+                    break;
+                case 2:
+                    displayFragmentCatalouge();
+                    break;
+                case 3:
+                    displayFragmentContactManager();
+                    break;
+
             }
+            return false;
         });
-binding.flSearch.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
-        Intent intent=new Intent(HomeActivity.this, CartActivity.class);
-        startActivity(intent);
-    }
-});
-        //  setUpBottomNavigation();
 
+        updateBottomNavigationPosition(0);
 
     }
 
+    public void updateBottomNavigationPosition(int pos) {
 
-    public void setimage() {
-        userModel = preferences.getUserData(this);
+        binding.ahBottomNav.setCurrentItem(pos, false);
 
-        if (userModel != null) {
-            binding.bottomNav.setItemIconTintList(null);
-
-            // this is important
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                binding.bottomNav.getMenu().getItem(4).setIconTintList(null);
-                binding.bottomNav.getMenu().getItem(4).setIconTintMode(null);
-            }
-            Glide.with(getApplicationContext()).asBitmap().load(R.drawable.user)
-                    .apply(RequestOptions.circleCropTransform()).into(new SimpleTarget<Bitmap>() {
-
-                @Override
-                public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
-                    // Log.e("lflgllg,";fllflf");
-
-                    Drawable profileImage = new BitmapDrawable(getResources(), resource);
-                    binding.bottomNav.getMenu().findItem(R.id.profile).setIcon(profileImage);
-                }
-
-                @Override
-                public void onLoadCleared(@Nullable Drawable placeholder) {
-
-
-                    binding.bottomNav.getMenu().findItem(R.id.profile).setIcon(R.drawable.user);
-
-
-                }
-
-                @Override
-                public void onLoadFailed(@Nullable Drawable errorDrawable) {
-                    super.onLoadFailed(errorDrawable);
-                    binding.bottomNav.getMenu().findItem(R.id.profile).setIcon(R.drawable.user);
-
-                }
-            });
-        } else {
-            binding.bottomNav.setItemIconTintList(null); // this is important
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                binding.bottomNav.getMenu().getItem(4).setIconTintList(null);
-                binding.bottomNav.getMenu().getItem(4).setIconTintMode(null);
-            }
-            Glide.with(getApplicationContext()).asBitmap().load(R.drawable.user)
-                    .apply(RequestOptions.circleCropTransform()).into(new SimpleTarget<Bitmap>() {
-
-                @Override
-                public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
-                    // Log.e("lflgllg,";fllflf");
-
-                    Drawable profileImage = new BitmapDrawable(getResources(), resource);
-                    binding.bottomNav.getMenu().findItem(R.id.profile).setIcon(profileImage);
-                }
-
-                @Override
-                public void onLoadCleared(@Nullable Drawable placeholder) {
-
-
-                    binding.bottomNav.getMenu().findItem(R.id.profile).setIcon(R.drawable.user);
-
-
-                }
-
-                @Override
-                public void onLoadFailed(@Nullable Drawable errorDrawable) {
-                    super.onLoadFailed(errorDrawable);
-                    binding.bottomNav.getMenu().findItem(R.id.profile).setIcon(R.drawable.user);
-
-                }
-            });
-        }
-        BottomNavigationMenuView menuView = (BottomNavigationMenuView) binding.bottomNav.getChildAt(0);
-
-        final View iconView =
-                menuView.getChildAt(4).findViewById(com.google.android.material.R.id.icon);
-        final ViewGroup.LayoutParams layoutParams =
-                iconView.getLayoutParams();
-        final DisplayMetrics displayMetrics =
-                getResources().getDisplayMetrics();
-        layoutParams.height = (int)
-                TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 45,
-                        displayMetrics);
-        layoutParams.width = (int)
-                TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 45,
-                        displayMetrics);
-        iconView.setLayoutParams(layoutParams);
-    }
-
-    //    private void setUpBottomNavigation() {
-//
-//        AHBottomNavigationItem item1 = new AHBottomNavigationItem(getString(R.string.home), R.drawable.ic_home);
-//        AHBottomNavigationItem item2 = new AHBottomNavigationItem(getString(R.string.store), R.drawable.ic_store);
-//        AHBottomNavigationItem item3 = new AHBottomNavigationItem(getString(R.string.add), R.drawable.ic_add);
-//        AHBottomNavigationItem item4 = new AHBottomNavigationItem(getString(R.string.orders), R.drawable.ic_experience);
-//        AHBottomNavigationItem item5 = new AHBottomNavigationItem(getString(R.string.more), R.drawable.user);
-//
-//        binding.ahBottomNav.setTitleState(AHBottomNavigation.TitleState.ALWAYS_SHOW);
-//        binding.ahBottomNav.setDefaultBackgroundColor(ContextCompat.getColor(this, R.color.color3));
-//        binding.ahBottomNav.setTitleTextSizeInSp(13, 13);
-//        binding.ahBottomNav.setForceTint(true);
-//        binding.ahBottomNav.setAccentColor(ContextCompat.getColor(this, R.color.colorPrimary));
-//        binding.ahBottomNav.setInactiveColor(ContextCompat.getColor(this, R.color.white));
-//
-//        binding.ahBottomNav.addItem(item1);
-//        binding.ahBottomNav.addItem(item2);
-//        binding.ahBottomNav.addItem(item3);
-//        binding.ahBottomNav.addItem(item4);
-//        binding.ahBottomNav.addItem(item5);
-//
-//
-//        binding.ahBottomNav.setOnTabSelectedListener((position, wasSelected) -> {
-//            return false;
-//        });
-//
-//        updateBottomNavigationPosition(0);
-//
-//    }
-//
-//    public void updateBottomNavigationPosition(int pos) {
-//
-//        binding.ahBottomNav.setCurrentItem(pos, false);
-//
-//    }
-    @Override
-    public void onResume() {
-        super.onResume();
-        setimage();
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        setimage();
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        setimage();
     }
 
 
@@ -268,19 +144,17 @@ binding.flSearch.setOnClickListener(new View.OnClickListener() {
             }
 
 
-            if (fragment_store != null && fragment_store.isAdded()) {
-                fragmentManager.beginTransaction().hide(fragment_store).commit();
+            if (fragment_dowanlod != null && fragment_dowanlod.isAdded()) {
+                fragmentManager.beginTransaction().hide(fragment_dowanlod).commit();
             }
-            if (fragment_add != null && fragment_add.isAdded()) {
-                fragmentManager.beginTransaction().hide(fragment_add).commit();
+            if (fragment_catalouge != null && fragment_catalouge.isAdded()) {
+                fragmentManager.beginTransaction().hide(fragment_catalouge).commit();
             }
 
-            if (fragment_comments != null && fragment_comments.isAdded()) {
-                fragmentManager.beginTransaction().hide(fragment_comments).commit();
+            if (fragment_contact_manger != null && fragment_contact_manger.isAdded()) {
+                fragmentManager.beginTransaction().hide(fragment_contact_manger).commit();
             }
-            if (fragment_profile != null && fragment_profile.isAdded()) {
-                fragmentManager.beginTransaction().hide(fragment_profile).commit();
-            }
+
             if (fragment_main.isAdded()) {
                 fragmentManager.beginTransaction().show(fragment_main).commit();
 
@@ -288,143 +162,109 @@ binding.flSearch.setOnClickListener(new View.OnClickListener() {
                 fragmentManager.beginTransaction().add(R.id.fragment_app_container, fragment_main, "fragment_main").addToBackStack("fragment_main").commit();
 
             }
+            updateBottomNavigationPosition(0);
             //  binding.setTitle(getString(R.string.home));
         } catch (Exception e) {
         }
 
     }
 
-    public void displayFragmentStore() {
+    public void displayFragmentDownload() {
         try {
-            if (fragment_store == null) {
-                fragment_store = Fragment_Store.newInstance();
+            if (fragment_dowanlod == null) {
+                fragment_dowanlod = Fragment_Dowanlod.newInstance();
             }
 
 
-            if (fragment_add != null && fragment_add.isAdded()) {
-                fragmentManager.beginTransaction().hide(fragment_add).commit();
+            if (fragment_catalouge != null && fragment_catalouge.isAdded()) {
+                fragmentManager.beginTransaction().hide(fragment_catalouge).commit();
             }
             if (fragment_main != null && fragment_main.isAdded()) {
                 fragmentManager.beginTransaction().hide(fragment_main).commit();
             }
 
-            if (fragment_comments != null && fragment_comments.isAdded()) {
-                fragmentManager.beginTransaction().hide(fragment_comments).commit();
+            if (fragment_contact_manger != null && fragment_contact_manger.isAdded()) {
+                fragmentManager.beginTransaction().hide(fragment_contact_manger).commit();
             }
-            if (fragment_profile != null && fragment_profile.isAdded()) {
-                fragmentManager.beginTransaction().hide(fragment_profile).commit();
-            }
-            if (fragment_store.isAdded()) {
-                fragmentManager.beginTransaction().show(fragment_store).commit();
+
+            if (fragment_dowanlod.isAdded()) {
+                fragmentManager.beginTransaction().show(fragment_dowanlod).commit();
 
             } else {
-                fragmentManager.beginTransaction().add(R.id.fragment_app_container, fragment_store, "fragment_store").addToBackStack("fragment_store").commit();
+                fragmentManager.beginTransaction().add(R.id.fragment_app_container, fragment_dowanlod, "fragment_download").addToBackStack("fragment_download").commit();
 
             }
+            updateBottomNavigationPosition(1);
 
         } catch (Exception e) {
         }
 
     }
 
-    public void displayFragmentComments() {
+    public void displayFragmentContactManager() {
         try {
-            if (fragment_comments == null) {
-                fragment_comments = Fragment_Comments.newInstance();
+            if (fragment_contact_manger == null) {
+                fragment_contact_manger = Fragment_Contact_Manger.newInstance();
             }
 
 
-            if (fragment_add != null && fragment_add.isAdded()) {
-                fragmentManager.beginTransaction().hide(fragment_add).commit();
+            if (fragment_catalouge != null && fragment_catalouge.isAdded()) {
+                fragmentManager.beginTransaction().hide(fragment_catalouge).commit();
             }
             if (fragment_main != null && fragment_main.isAdded()) {
                 fragmentManager.beginTransaction().hide(fragment_main).commit();
             }
 
-            if (fragment_store != null && fragment_store.isAdded()) {
-                fragmentManager.beginTransaction().hide(fragment_store).commit();
+            if (fragment_dowanlod != null && fragment_dowanlod.isAdded()) {
+                fragmentManager.beginTransaction().hide(fragment_dowanlod).commit();
             }
-            if (fragment_profile != null && fragment_profile.isAdded()) {
-                fragmentManager.beginTransaction().hide(fragment_profile).commit();
-            }
-            if (fragment_comments.isAdded()) {
-                fragmentManager.beginTransaction().show(fragment_comments).commit();
+
+            if (fragment_contact_manger.isAdded()) {
+                fragmentManager.beginTransaction().show(fragment_contact_manger).commit();
 
             } else {
-                fragmentManager.beginTransaction().add(R.id.fragment_app_container, fragment_comments, "fragment_comments").addToBackStack("fragment_comments").commit();
+                fragmentManager.beginTransaction().add(R.id.fragment_app_container, fragment_contact_manger, "fragment_comments").addToBackStack("fragment_comments").commit();
 
             }
+            updateBottomNavigationPosition(3);
 
         } catch (Exception e) {
         }
 
     }
 
-    public void displayFragmentProfile() {
+
+    public void displayFragmentCatalouge() {
         try {
-            if (fragment_profile == null) {
-                fragment_profile = Fragment_Profile.newInstance();
+            if (fragment_catalouge == null) {
+                fragment_catalouge = Fragment_Catalouge.newInstance();
             }
 
 
-            if (fragment_add != null && fragment_add.isAdded()) {
-                fragmentManager.beginTransaction().hide(fragment_add).commit();
-            }
             if (fragment_main != null && fragment_main.isAdded()) {
                 fragmentManager.beginTransaction().hide(fragment_main).commit();
             }
 
-            if (fragment_store != null && fragment_store.isAdded()) {
-                fragmentManager.beginTransaction().hide(fragment_store).commit();
+            if (fragment_dowanlod != null && fragment_dowanlod.isAdded()) {
+                fragmentManager.beginTransaction().hide(fragment_dowanlod).commit();
             }
-            if (fragment_comments != null && fragment_comments.isAdded()) {
-                fragmentManager.beginTransaction().hide(fragment_comments).commit();
+            if (fragment_contact_manger != null && fragment_contact_manger.isAdded()) {
+                fragmentManager.beginTransaction().hide(fragment_contact_manger).commit();
             }
-            if (fragment_profile.isAdded()) {
-                fragmentManager.beginTransaction().show(fragment_profile).commit();
+            if (fragment_catalouge.isAdded()) {
+                fragmentManager.beginTransaction().show(fragment_catalouge).commit();
 
             } else {
-                fragmentManager.beginTransaction().add(R.id.fragment_app_container, fragment_profile, "fragment_profile").addToBackStack("fragment_profile").commit();
+                fragmentManager.beginTransaction().add(R.id.fragment_app_container, fragment_catalouge, "fragment_cataloug").addToBackStack("fragment_cataloug").commit();
 
             }
+            updateBottomNavigationPosition(2);
 
         } catch (Exception e) {
         }
 
     }
 
-    public void displayFragmentAddPost() {
-        try {
-            if (fragment_add== null) {
-                fragment_add = Fragment_Add.newInstance();
-            }
-
-
-            if (fragment_profile != null && fragment_profile.isAdded()) {
-                fragmentManager.beginTransaction().hide(fragment_profile).commit();
-            }
-            if (fragment_main != null && fragment_main.isAdded()) {
-                fragmentManager.beginTransaction().hide(fragment_main).commit();
-            }
-
-            if (fragment_store != null && fragment_store.isAdded()) {
-                fragmentManager.beginTransaction().hide(fragment_store).commit();
-            }
-            if (fragment_comments != null && fragment_comments.isAdded()) {
-                fragmentManager.beginTransaction().hide(fragment_comments).commit();
-            }
-            if (fragment_add.isAdded()) {
-                fragmentManager.beginTransaction().show(fragment_add).commit();
-
-            } else {
-                fragmentManager.beginTransaction().add(R.id.fragment_app_container, fragment_add, "fragment_add").addToBackStack("fragment_add").commit();
-
-            }
-
-        } catch (Exception e) {
-        }
-
-    }
     @Override
     public void onBackPressed() {
         back();
@@ -437,19 +277,18 @@ binding.flSearch.setOnClickListener(new View.OnClickListener() {
                 if (fragment_main.behavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
 
                     fragment_main.behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                } else {
+                    finish();
                 }
-                else {
-                finish();}
-            }
-            else {
+            } else {
                 if (fragment_main.behavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
 
                     fragment_main.behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                } else {
+                    //  navigateToSignInActivity();}
                 }
-                else {
-              //  navigateToSignInActivity();}
             }
-        }} else {
+        } else {
             displayFragmentMain();
         }
     }

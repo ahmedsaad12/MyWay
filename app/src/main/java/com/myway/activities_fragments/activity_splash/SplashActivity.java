@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.myway.R;
-import com.myway.activities_fragments.activity_coffee_detials.ChooseCountryActivity;
+import com.myway.activities_fragments.activity_choose_country.ChooseCountryActivity;
 import com.myway.databinding.ActivitySplashBinding;
 import com.myway.language.Language;
 

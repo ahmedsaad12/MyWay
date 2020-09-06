@@ -1,14 +1,12 @@
-package com.myway.activities_fragments.activity_coffee_detials;
+package com.myway.activities_fragments.activity_choose_country;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 
 import com.myway.R;
@@ -16,11 +14,6 @@ import com.myway.activities_fragments.activity_home.HomeActivity;
 import com.myway.databinding.ActivityChooseCountryBinding;
 import com.myway.language.Language;
 import com.myway.preferences.Preferences;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import io.paperdb.Paper;
 

@@ -4,8 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
-import com.v60BNS.models.UserModel;
-import com.v60BNS.tags.Tags;
+import com.myway.models.UserModel;
+import com.myway.tags.Tags;
+
 
 public class Preferences {
 

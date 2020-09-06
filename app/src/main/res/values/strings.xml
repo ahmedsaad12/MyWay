@@ -11,4 +11,7 @@
     <string name="contact_us">Contact Us</string>
     <string name="work_setting">Work Setting</string>
     <string name="join_my_way_company">Join My Way Company</string>
+    <string name="home">Home</string>
+    <string name="store">Download</string>
+    <string name="contact_manger">Contact Manager</string>
 </resources>
