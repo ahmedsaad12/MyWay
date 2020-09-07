@@ -52,11 +52,13 @@ public class OffersActivity extends AppCompatActivity implements Listeners.BackL
         lang = Paper.book().read("lang", "ar");
         binding.setLang(lang);
         binding.setBackListener(this);
-        food_adapter=new Offers_Adapter(dataList,this);
 
         initData();
+        food_adapter=new Offers_Adapter(dataList,this);
+
         binding.recView.setLayoutManager(new LinearLayoutManager(this));
         binding.recView.setAdapter(food_adapter);
+        Adddata();
 
     }
 
@@ -64,7 +66,6 @@ public class OffersActivity extends AppCompatActivity implements Listeners.BackL
         dataList = new ArrayList<>();
 
 
-        Adddata();
     }
 
     private void Adddata() {
