@@ -35,7 +35,27 @@
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize">
 
         </activity>
+        <activity
+            android:name=".activities_fragments.activity_product.ProductActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize">
 
+        </activity>
+        <activity
+            android:name=".activities_fragments.activity_news.NewsActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize">
+
+        </activity>
+        <activity
+            android:name=".activities_fragments.activity_offers.OffersActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize">
+
+        </activity>
         <activity
             android:name=".activities_fragments.activity_splash.SplashActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"

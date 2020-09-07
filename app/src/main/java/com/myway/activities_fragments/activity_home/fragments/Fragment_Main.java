@@ -1,6 +1,7 @@
 package com.myway.activities_fragments.activity_home.fragments;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.myway.R;
 import com.myway.activities_fragments.activity_home.HomeActivity;
+import com.myway.activities_fragments.activity_news.NewsActivity;
+import com.myway.activities_fragments.activity_offers.OffersActivity;
+import com.myway.activities_fragments.activity_product.ProductActivity;
+import com.myway.adapters.Product_Adapter;
 import com.myway.databinding.FragmnetMainBinding;
 import com.myway.preferences.Preferences;
 
@@ -58,8 +63,27 @@ public class Fragment_Main extends Fragment {
         preferences = Preferences.getInstance();
         Paper.init(activity);
         lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
-
-
+binding.cardnews.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        Intent intent=new Intent(activity, NewsActivity.class);
+        startActivity(intent);
+    }
+});
+        binding.cardproduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(activity, ProductActivity.class);
+                startActivity(intent);
+            }
+        });
+        binding.cardoffers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(activity, OffersActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 

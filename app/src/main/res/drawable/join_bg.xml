@@ -5,5 +5,5 @@
     <corners android:radius="5dp"/>
     <stroke android:color="@color/white"
         android:width="2dp"/>
-    <gradient android:startColor="@color/con1" android:endColor="@color/con2"/>
+    <gradient android:startColor="@color/join1" android:endColor="@color/join2"/>
 </shape>

@@ -44,7 +44,11 @@
     <color name="cataloug">#ff6431</color>
     <color name="surprice">#00927d</color>
     <color name="offers">#ff9c00</color>
-
+    <color name="con1">#088ab0</color>
+    <color name="con2">#0c708d</color>
+    <color name="join1">#a93335</color>
+    <color name="join2">#802040</color>
+    <color name="toolbar">#aa3335</color>
     <array name="dots">
         <item>@color/colorPrimary</item>
         <item>@color/colorPrimaryDark</item>

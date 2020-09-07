@@ -3,7 +3,7 @@
     <string name="choose_country">Choose Country</string>
     <string name="egypt">Egypt</string>
     <string name="saudia">Saudia</string>
-    <string name="product">Product</string>
+    <string name="product">Products</string>
     <string name="news">News</string>
     <string name="catalouge">Catalouge</string>
     <string name="cadua">Cadua</string>
@@ -14,4 +14,5 @@
     <string name="home">Home</string>
     <string name="store">Download</string>
     <string name="contact_manger">Contact Manager</string>
+    <string name="read_more">Read More</string>
 </resources>
