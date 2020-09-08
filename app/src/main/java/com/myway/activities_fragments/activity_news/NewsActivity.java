@@ -54,8 +54,8 @@ public class NewsActivity extends AppCompatActivity implements Listeners.BackLis
         binding.setBackListener(this);
 
         initData();
-        food_adapter=new Offers_Adapter
-                (dataList,this);
+        food_adapter = new Offers_Adapter
+                (dataList, this);
 
         binding.recView.setLayoutManager(new LinearLayoutManager(this));
         binding.recView.setAdapter(food_adapter);
@@ -88,7 +88,6 @@ public class NewsActivity extends AppCompatActivity implements Listeners.BackLis
         dataList.add(new MarketCatogryModel.Data());
         food_adapter.notifyDataSetChanged();
     }
-
 
 
     @Override
