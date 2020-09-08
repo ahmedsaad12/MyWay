@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.myway.R;
+import com.myway.adapters.Offers_Adapter;
 import com.myway.adapters.Product_Adapter;
 import com.myway.databinding.ActivityNewsBinding;
 import com.myway.databinding.ActivityProductsBinding;
@@ -28,7 +29,7 @@ public class NewsActivity extends AppCompatActivity implements Listeners.BackLis
     private Preferences preferences;
 
     private List<MarketCatogryModel.Data> dataList;
-    private Product_Adapter food_adapter;
+    private Offers_Adapter food_adapter;
 
     protected void attachBaseContext(Context newBase) {
         Paper.init(newBase);
@@ -53,7 +54,7 @@ public class NewsActivity extends AppCompatActivity implements Listeners.BackLis
         binding.setBackListener(this);
 
         initData();
-        food_adapter=new Product_Adapter(dataList,this);
+        food_adapter=new Offers_Adapter(dataList,this);
 
         binding.recView.setLayoutManager(new LinearLayoutManager(this));
         binding.recView.setAdapter(food_adapter);
