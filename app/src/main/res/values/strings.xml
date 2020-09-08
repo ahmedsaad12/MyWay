@@ -15,4 +15,17 @@
     <string name="store">Download</string>
     <string name="contact_manger">Contact Manager</string>
     <string name="read_more">Read More</string>
+    <string name="change_country">Change Country</string>
+    <string name="about_app">About App</string>
+    <string name="our_page_on_facebook">Our Page On Facebook</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="subject">Subject</string>
+    <string name="message">Message</string>
+    <string name="send">Send</string>
+    <string name="write_your_message_here">Write Your Message Here</string>
+    <string name="field_required">Field Required</string>
+    <string name="inv_email">Invalid Email</string>
+    <string name="wait">Wait</string>
+    <string name="suc">Success</string>
 </resources>

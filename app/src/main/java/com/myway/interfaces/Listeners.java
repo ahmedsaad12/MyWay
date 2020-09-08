@@ -7,4 +7,14 @@ public interface Listeners {
     {
         void back();
     }
+    interface SettingActions
+    {
+        void contactUs();
+        void changecountry();
+        void aboutApp();
+        void joinMyway();
+        void ourpage();
+
+
+    }
 }

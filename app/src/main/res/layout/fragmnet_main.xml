@@ -308,6 +308,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cardcontactus"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
@@ -322,6 +323,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
        />
+
     <LinearLayout
 
         android:layout_width="match_parent"
@@ -336,18 +338,18 @@
         <ImageView
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:layout_gravity="center"
             android:clickable="false"
             android:longClickable="false"
-            android:layout_gravity="center"
             android:src="@drawable/contact" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginStart="5dp"
             android:clickable="false"
             android:gravity="center"
-            android:layout_gravity="center"
             android:longClickable="false"
             android:text="@string/contact_us"
             android:textColor="@color/white"

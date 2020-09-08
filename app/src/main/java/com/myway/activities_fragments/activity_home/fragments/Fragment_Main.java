@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.myway.R;
+import com.myway.activities_fragments.activity_contact_us.ContactUsActivity;
 import com.myway.activities_fragments.activity_home.HomeActivity;
 import com.myway.activities_fragments.activity_news.NewsActivity;
 import com.myway.activities_fragments.activity_offers.OffersActivity;
@@ -63,24 +64,32 @@ public class Fragment_Main extends Fragment {
         preferences = Preferences.getInstance();
         Paper.init(activity);
         lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
-binding.cardnews.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
-        Intent intent=new Intent(activity, NewsActivity.class);
-        startActivity(intent);
-    }
-});
-        binding.cardproduct.setOnClickListener(new View.OnClickListener() {
+        binding.cardnews.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(activity, ProductActivity.class);
+                Intent intent = new Intent(activity, NewsActivity.class);
                 startActivity(intent);
             }
         });
+        binding.cardproduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(activity, ProductActivity.class);
+                startActivity(intent);
+            }
+        });
+
         binding.cardoffers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(activity, OffersActivity.class);
+                Intent intent = new Intent(activity, OffersActivity.class);
+                startActivity(intent);
+            }
+        });
+        binding.cardcontactus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(activity, ContactUsActivity.class);
                 startActivity(intent);
             }
         });

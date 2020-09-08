@@ -1,20 +1,8 @@
 package com.myway.activities_fragments.activity_home;
 
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.util.TypedValue;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
@@ -22,16 +10,9 @@ import androidx.fragment.app.FragmentManager;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
-import com.bumptech.glide.request.target.SimpleTarget;
-import com.bumptech.glide.request.transition.Transition;
-import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.myway.R;
 import com.myway.activities_fragments.activity_home.fragments.Fragment_Catalouge;
-import com.myway.activities_fragments.activity_home.fragments.Fragment_Contact_Manger;
+import com.myway.activities_fragments.activity_home.fragments.Fragment_More;
 import com.myway.activities_fragments.activity_home.fragments.Fragment_Dowanlod;
 import com.myway.activities_fragments.activity_home.fragments.Fragment_Main;
 import com.myway.databinding.ActivityHomeBinding;
@@ -42,7 +23,6 @@ import com.myway.preferences.Preferences;
 
 import io.paperdb.Paper;
 
-
 public class HomeActivity extends AppCompatActivity {
     private ActivityHomeBinding binding;
     private Preferences preferences;
@@ -50,11 +30,10 @@ public class HomeActivity extends AppCompatActivity {
     private Fragment_Main fragment_main;
     private Fragment_Dowanlod fragment_dowanlod;
     private Fragment_Catalouge fragment_catalouge;
-    private Fragment_Contact_Manger fragment_contact_manger;
+    private Fragment_More fragment_more;
     private UserModel userModel;
     private String lang;
     private String token;
-
 
     protected void attachBaseContext(Context newBase) {
         Paper.init(newBase);
@@ -119,7 +98,7 @@ public class HomeActivity extends AppCompatActivity {
                     displayFragmentCatalouge();
                     break;
                 case 3:
-                    displayFragmentContactManager();
+                    displayFragmentMore();
                     break;
 
             }
@@ -151,8 +130,8 @@ public class HomeActivity extends AppCompatActivity {
                 fragmentManager.beginTransaction().hide(fragment_catalouge).commit();
             }
 
-            if (fragment_contact_manger != null && fragment_contact_manger.isAdded()) {
-                fragmentManager.beginTransaction().hide(fragment_contact_manger).commit();
+            if (fragment_more != null && fragment_more.isAdded()) {
+                fragmentManager.beginTransaction().hide(fragment_more).commit();
             }
 
             if (fragment_main.isAdded()) {
@@ -183,8 +162,8 @@ public class HomeActivity extends AppCompatActivity {
                 fragmentManager.beginTransaction().hide(fragment_main).commit();
             }
 
-            if (fragment_contact_manger != null && fragment_contact_manger.isAdded()) {
-                fragmentManager.beginTransaction().hide(fragment_contact_manger).commit();
+            if (fragment_more != null && fragment_more.isAdded()) {
+                fragmentManager.beginTransaction().hide(fragment_more).commit();
             }
 
             if (fragment_dowanlod.isAdded()) {
@@ -201,10 +180,10 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-    public void displayFragmentContactManager() {
+    public void displayFragmentMore() {
         try {
-            if (fragment_contact_manger == null) {
-                fragment_contact_manger = Fragment_Contact_Manger.newInstance();
+            if (fragment_more == null) {
+                fragment_more = Fragment_More.newInstance();
             }
 
 
@@ -219,11 +198,11 @@ public class HomeActivity extends AppCompatActivity {
                 fragmentManager.beginTransaction().hide(fragment_dowanlod).commit();
             }
 
-            if (fragment_contact_manger.isAdded()) {
-                fragmentManager.beginTransaction().show(fragment_contact_manger).commit();
+            if (fragment_more.isAdded()) {
+                fragmentManager.beginTransaction().show(fragment_more).commit();
 
             } else {
-                fragmentManager.beginTransaction().add(R.id.fragment_app_container, fragment_contact_manger, "fragment_comments").addToBackStack("fragment_comments").commit();
+                fragmentManager.beginTransaction().add(R.id.fragment_app_container, fragment_more, "fragment_comments").addToBackStack("fragment_comments").commit();
 
             }
             updateBottomNavigationPosition(3);
@@ -248,8 +227,8 @@ public class HomeActivity extends AppCompatActivity {
             if (fragment_dowanlod != null && fragment_dowanlod.isAdded()) {
                 fragmentManager.beginTransaction().hide(fragment_dowanlod).commit();
             }
-            if (fragment_contact_manger != null && fragment_contact_manger.isAdded()) {
-                fragmentManager.beginTransaction().hide(fragment_contact_manger).commit();
+            if (fragment_more != null && fragment_more.isAdded()) {
+                fragmentManager.beginTransaction().hide(fragment_more).commit();
             }
             if (fragment_catalouge.isAdded()) {
                 fragmentManager.beginTransaction().show(fragment_catalouge).commit();
@@ -281,5 +260,7 @@ public class HomeActivity extends AppCompatActivity {
             displayFragmentMain();
         }
     }
+
+
 
 }
