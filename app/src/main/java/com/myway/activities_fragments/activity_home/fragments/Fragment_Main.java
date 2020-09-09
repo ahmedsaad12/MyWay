@@ -17,11 +17,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.myway.R;
+import com.myway.activities_fragments.activity_cadua.CaduaActivity;
 import com.myway.activities_fragments.activity_contact_us.ContactUsActivity;
 import com.myway.activities_fragments.activity_home.HomeActivity;
 import com.myway.activities_fragments.activity_news.NewsActivity;
 import com.myway.activities_fragments.activity_offers.OffersActivity;
 import com.myway.activities_fragments.activity_product.ProductActivity;
+import com.myway.activities_fragments.activityjoinmyway.JoinMyWayActivity;
 import com.myway.adapters.Product_Adapter;
 import com.myway.databinding.FragmnetMainBinding;
 import com.myway.preferences.Preferences;
@@ -90,6 +92,20 @@ public class Fragment_Main extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(activity, ContactUsActivity.class);
+                startActivity(intent);
+            }
+        });
+        binding.cardjoin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(activity, JoinMyWayActivity.class);
+                startActivity(intent);
+            }
+        });
+        binding.cardcadua.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(activity, CaduaActivity.class);
                 startActivity(intent);
             }
         });

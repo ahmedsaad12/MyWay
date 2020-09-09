@@ -16,6 +16,7 @@ import com.myway.R;
 import com.myway.activities_fragments.activity_choose_country.ChooseCountryActivity;
 import com.myway.activities_fragments.activity_contact_us.ContactUsActivity;
 import com.myway.activities_fragments.activity_home.HomeActivity;
+import com.myway.activities_fragments.activityjoinmyway.JoinMyWayActivity;
 import com.myway.databinding.FragmentMoreBinding;
 import com.myway.interfaces.Listeners;
 import com.myway.models.UserModel;
@@ -84,7 +85,8 @@ public class Fragment_More extends Fragment implements Listeners.SettingActions 
 
     @Override
     public void joinMyway() {
-
+        Intent intent=new Intent(activity, JoinMyWayActivity.class);
+        startActivity(intent);
     }
 
     @Override

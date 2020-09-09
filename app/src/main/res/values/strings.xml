@@ -28,4 +28,17 @@
     <string name="inv_email">Invalid Email</string>
     <string name="wait">Wait</string>
     <string name="suc">Success</string>
+    <string name="full_name">Full Name</string>
+    <string name="please_write_your_name_4">Please Write Your Name 4</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="your_phone_number_to_contact_with_you">Your Phone Number To contact With You</string>
+    <string name="national_number">National Number</string>
+    <string name="write_num_here_contain_14_num">Write Num Here Contain 14 num</string>
+    <string name="title_by_detials">Title By Detials</string>
+    <string name="dowanload_pdf">Dowanload Pdf</string>
+    <string name="show_cataloug">Show Cataloug</string>
+    <string name="calculate_your_cadua">Calculate Your Cadua</string>
+    <string name="to_calculate_your_rewards_please_enter_the_number_of_your_points_here">To calculate your rewards, please enter the number of your points here</string>
+    <string name="please_enter_the_number_of_your_points_here">please enter the number of your points here</string>
+    <string name="_20_geneh">20 Geneh</string>
 </resources>

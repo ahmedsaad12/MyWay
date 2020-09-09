@@ -24,12 +24,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.myway.R;
 import com.myway.activities_fragments.activity_home.HomeActivity;
+import com.myway.adapters.Cataloug_Adapter;
 import com.myway.databinding.FragmentCatalougBinding;
+import com.myway.models.MarketCatogryModel;
 import com.myway.models.Model_images;
 import com.myway.models.UserModel;
 import com.myway.preferences.Preferences;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import io.paperdb.Paper;
@@ -43,6 +46,8 @@ public class Fragment_Catalouge extends Fragment {
     private String lang;
 
 
+    private List<MarketCatogryModel.Data> dataList;
+    private Cataloug_Adapter food_adapter;
 
     public static Fragment_Catalouge newInstance() {
         return new Fragment_Catalouge();
@@ -71,7 +76,42 @@ public class Fragment_Catalouge extends Fragment {
 //            }
 //        });
 
+
+        initData();
+        food_adapter=new Cataloug_Adapter(dataList,activity);
+
+        binding.recViewStatus.setLayoutManager(new LinearLayoutManager(activity));
+        binding.recViewStatus.setAdapter(food_adapter);
+        Adddata();
+
     }
+
+    private void initData() {
+        dataList = new ArrayList<>();
+
+
+    }
+
+    private void Adddata() {
+        dataList.add(new MarketCatogryModel.Data());
+        dataList.add(new MarketCatogryModel.Data());
+        dataList.add(new MarketCatogryModel.Data());
+        dataList.add(new MarketCatogryModel.Data());
+        dataList.add(new MarketCatogryModel.Data());
+        dataList.add(new MarketCatogryModel.Data());
+        dataList.add(new MarketCatogryModel.Data());
+        dataList.add(new MarketCatogryModel.Data());
+        dataList.add(new MarketCatogryModel.Data());
+        dataList.add(new MarketCatogryModel.Data());
+        dataList.add(new MarketCatogryModel.Data());
+        dataList.add(new MarketCatogryModel.Data());
+        dataList.add(new MarketCatogryModel.Data());
+        dataList.add(new MarketCatogryModel.Data());
+        dataList.add(new MarketCatogryModel.Data());
+        dataList.add(new MarketCatogryModel.Data());
+        food_adapter.notifyDataSetChanged();
+    }
+
 
 
 
