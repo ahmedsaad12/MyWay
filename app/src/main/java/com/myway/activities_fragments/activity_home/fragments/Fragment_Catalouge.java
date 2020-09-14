@@ -25,7 +25,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.myway.R;
 import com.myway.activities_fragments.activity_home.HomeActivity;
 import com.myway.databinding.FragmentCatalougBinding;
-import com.myway.models.Model_images;
 import com.myway.models.UserModel;
 import com.myway.preferences.Preferences;
 
