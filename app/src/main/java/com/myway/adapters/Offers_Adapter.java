@@ -10,8 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.myway.R;
 import com.myway.databinding.OffersRowBinding;
-import com.myway.databinding.ProductRowBinding;
-import com.myway.models.MarketCatogryModel;
 
 import java.util.List;
 import java.util.Locale;

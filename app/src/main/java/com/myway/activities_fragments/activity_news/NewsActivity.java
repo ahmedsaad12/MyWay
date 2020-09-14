@@ -9,12 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.myway.R;
 import com.myway.adapters.Offers_Adapter;
-import com.myway.adapters.Product_Adapter;
 import com.myway.databinding.ActivityNewsBinding;
-import com.myway.databinding.ActivityProductsBinding;
 import com.myway.interfaces.Listeners;
 import com.myway.language.Language;
-import com.myway.models.MarketCatogryModel;
 import com.myway.preferences.Preferences;
 
 import java.util.ArrayList;

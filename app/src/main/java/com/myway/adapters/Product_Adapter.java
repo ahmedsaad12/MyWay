@@ -2,18 +2,16 @@ package com.myway.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.myway.R;
 import com.myway.databinding.ProductRowBinding;
-import com.myway.models.MarketCatogryModel;
+import com.myway.models.SingleProductModel;
 
 import java.util.List;
 import java.util.Locale;
@@ -22,13 +20,13 @@ import io.paperdb.Paper;
 
 public class Product_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<MarketCatogryModel.Data> orderlist;
+    private List<SingleProductModel> orderlist;
     private Context context;
     private LayoutInflater inflater;
     private String lang;
     private int i = -1;
 
-    public Product_Adapter(List<MarketCatogryModel.Data> orderlist, Context context) {
+    public Product_Adapter(List<SingleProductModel> orderlist, Context context) {
         this.orderlist = orderlist;
         this.context = context;
         inflater = LayoutInflater.from(context);
@@ -52,7 +50,7 @@ public class Product_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
 
         EventsHolder msgRightHolder = (EventsHolder) holder;
-
+        msgRightHolder.binding.setModel(orderlist.get(i));
 //        Liked_Adapter comments_adapter = new Liked_Adapter(orderlist, context);
 //        msgRightHolder.binding.recliked.setLayoutManager(new LinearLayoutManager(context, RecyclerView.HORIZONTAL, false));
 //        msgRightHolder.binding.recliked.setAdapter(comments_adapter);

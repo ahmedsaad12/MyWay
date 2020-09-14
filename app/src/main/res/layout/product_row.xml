@@ -4,6 +4,9 @@
 
     <data>
 
+        <variable
+            name="model"
+            type="com.myway.models.SingleProductModel" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -19,11 +22,11 @@
 
             <ImageView
                 android:id="@+id/image"
+                image="@{model.image}"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_gravity="center"
-                android:scaleType="fitXY"
-                android:src="@drawable/img2" />
+                android:scaleType="fitXY" />
         </FrameLayout>
 
     </androidx.cardview.widget.CardView>

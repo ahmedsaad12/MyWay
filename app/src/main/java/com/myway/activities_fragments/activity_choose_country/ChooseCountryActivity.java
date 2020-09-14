@@ -46,6 +46,8 @@ public class ChooseCountryActivity extends AppCompatActivity {
        binding.llegypt.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
+               preferences.create_update_country(ChooseCountryActivity.this,"egypt");
+
                Intent intent=new Intent(ChooseCountryActivity.this, HomeActivity.class);
 
                startActivity(intent);
@@ -55,6 +57,7 @@ public class ChooseCountryActivity extends AppCompatActivity {
         binding.llsuadia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                preferences.create_update_country(ChooseCountryActivity.this,"saudi");
                 Intent intent=new Intent(ChooseCountryActivity.this, HomeActivity.class);
 
                 startActivity(intent);

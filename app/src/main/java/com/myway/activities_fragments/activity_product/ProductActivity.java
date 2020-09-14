@@ -2,6 +2,8 @@ package com.myway.activities_fragments.activity_product;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -13,13 +15,20 @@ import com.myway.adapters.Product_Adapter;
 import com.myway.databinding.ActivityProductsBinding;
 import com.myway.interfaces.Listeners;
 import com.myway.language.Language;
-import com.myway.models.MarketCatogryModel;
+import com.myway.models.ProductDataModel;
+import com.myway.models.SingleProductModel;
 import com.myway.preferences.Preferences;
+import com.myway.remote.Api;
+import com.myway.tags.Tags;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import io.paperdb.Paper;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class ProductActivity extends AppCompatActivity implements Listeners.BackListener {
@@ -27,7 +36,7 @@ public class ProductActivity extends AppCompatActivity implements Listeners.Back
     private String lang;
     private Preferences preferences;
 
-    private List<MarketCatogryModel.Data> dataList;
+    private List<SingleProductModel> dataList;
     private Product_Adapter food_adapter;
 
     protected void attachBaseContext(Context newBase) {
@@ -53,11 +62,11 @@ public class ProductActivity extends AppCompatActivity implements Listeners.Back
         binding.setBackListener(this);
 
         initData();
-        food_adapter=new Product_Adapter(dataList,this);
+        food_adapter = new Product_Adapter(dataList, this);
 
         binding.recView.setLayoutManager(new LinearLayoutManager(this));
         binding.recView.setAdapter(food_adapter);
-        Adddata();
+        getProducts();
 
     }
 
@@ -67,26 +76,66 @@ public class ProductActivity extends AppCompatActivity implements Listeners.Back
 
     }
 
-    private void Adddata() {
-        dataList.add(new MarketCatogryModel.Data());
-        dataList.add(new MarketCatogryModel.Data());
-        dataList.add(new MarketCatogryModel.Data());
-        dataList.add(new MarketCatogryModel.Data());
-        dataList.add(new MarketCatogryModel.Data());
-        dataList.add(new MarketCatogryModel.Data());
-        dataList.add(new MarketCatogryModel.Data());
-        dataList.add(new MarketCatogryModel.Data());
-        dataList.add(new MarketCatogryModel.Data());
-        dataList.add(new MarketCatogryModel.Data());
-        dataList.add(new MarketCatogryModel.Data());
-        dataList.add(new MarketCatogryModel.Data());
-        dataList.add(new MarketCatogryModel.Data());
-        dataList.add(new MarketCatogryModel.Data());
-        dataList.add(new MarketCatogryModel.Data());
-        dataList.add(new MarketCatogryModel.Data());
+    private void getProducts() {
+        binding.progBar.setVisibility(View.VISIBLE);
+        dataList.clear();
         food_adapter.notifyDataSetChanged();
-    }
 
+        Api.getService(Tags.base_url)
+                .getproducts("all", preferences.getCountry(this))
+                .enqueue(new Callback<ProductDataModel>() {
+                    @Override
+                    public void onResponse(Call<ProductDataModel> call, Response<ProductDataModel> response) {
+                        binding.progBar.setVisibility(View.GONE);
+                        if (response.isSuccessful()) {
+                            dataList.addAll(response.body().getData().getProducts());
+
+                            if (dataList.size() > 0) {
+                                food_adapter.notifyDataSetChanged();
+                                binding.tvNoEvents.setVisibility(View.GONE);
+                            } else {
+                                binding.tvNoEvents.setVisibility(View.VISIBLE);
+
+                            }
+
+
+                        } else {
+                            binding.progBar.setVisibility(View.GONE);
+
+                            try {
+                                Log.e("errorNotCode", response.code() + "__" + response.errorBody().string());
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+                            if (response.code() == 500) {
+                                // Toast.makeText(SearchActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
+                            } else {
+                                //Toast.makeText(SearchActivity.this, getString(R.string.failed), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ProductDataModel> call, Throwable t) {
+                        try {
+                            binding.progBar.setVisibility(View.GONE);
+
+                            if (t.getMessage() != null) {
+                                Log.e("error_not_code", t.getMessage() + "__");
+
+                                if (t.getMessage().toLowerCase().contains("failed to connect") || t.getMessage().toLowerCase().contains("unable to resolve host")) {
+                                    //  Toast.makeText(SearchActivity.this, getString(R.string.something), Toast.LENGTH_SHORT).show();
+                                } else {
+                                    //Toast.makeText(SearchActivity.this, getString(R.string.failed), Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        } catch (Exception e) {
+                            Log.e("Error", e.getMessage() + "__");
+                        }
+                    }
+                });
+    }
 
 
     @Override
