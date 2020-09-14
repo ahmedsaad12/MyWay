@@ -3,7 +3,10 @@ package com.myway.activities_fragments.activity_cadua;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -51,7 +54,43 @@ public class CaduaActivity extends AppCompatActivity implements Listeners.BackLi
         lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
         binding.setLang(lang);
         binding.setBackListener(this);
+binding.edtcadua.addTextChangedListener(new TextWatcher() {
+    @Override
+    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+    }
+
+    @Override
+    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable editable) {
+int num=Integer.parseInt(binding.edtcadua.getText().toString());
+if(num>=200&&num<=599){
+
+}
+else if(num>=600&&num<=1199){
+
+}
+else if(num>=1200&&num<=2399){
+
+}
+else if(num>=2400&&num<=3999){
+
+}
+else if(num>=4000&&num<=6599){
+
+}
+else if(num>=6600&&num<=9999){
+
+}
+else if(num>=10000){
+
+}
+    }
+});
 
 
     }
