@@ -71,7 +71,7 @@ public class HomeActivity extends AppCompatActivity {
         AHBottomNavigationItem item4 = new AHBottomNavigationItem(getString(R.string.contact_manger), R.drawable.ic_search);
 
         binding.ahBottomNav.setTitleState(AHBottomNavigation.TitleState.ALWAYS_SHOW);
-        binding.ahBottomNav.setDefaultBackgroundColor(ContextCompat.getColor(this, R.color.color3));
+        binding.ahBottomNav.setDefaultBackgroundColor(ContextCompat.getColor(this, R.color.white));
         binding.ahBottomNav.setTitleTextSizeInSp(13, 13);
         binding.ahBottomNav.setForceTint(true);
         binding.ahBottomNav.setAccentColor(ContextCompat.getColor(this, R.color.colorPrimary));
