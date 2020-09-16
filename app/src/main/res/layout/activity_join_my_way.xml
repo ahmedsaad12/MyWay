@@ -161,7 +161,7 @@
                     android:paddingRight="8dp"
                     android:paddingLeft="8dp"
                     android:gravity="center_vertical"
-                    android:text="@string/phone_number"
+                    android:text="@string/email"
                     />
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
@@ -196,7 +196,7 @@
                             android:textColorHint="@color/gray4"
                             android:textColor="@color/black"
                             android:textSize="15sp"
-                            android:hint="@string/your_phone_number_to_contact_with_you"
+                            android:hint="@string/email"
                             android:inputType="textEmailAddress"
                             android:text="@={contactUs.email}"
                             error="@{contactUs.error_email}"
