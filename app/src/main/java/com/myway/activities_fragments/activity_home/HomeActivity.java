@@ -65,10 +65,10 @@ public class HomeActivity extends AppCompatActivity {
 
     private void setUpBottomNavigation() {
 
-        AHBottomNavigationItem item1 = new AHBottomNavigationItem(getString(R.string.home), R.drawable.ic_search);
+        AHBottomNavigationItem item1 = new AHBottomNavigationItem(getString(R.string.home), R.drawable.ic_nav_home);
         AHBottomNavigationItem item2 = new AHBottomNavigationItem(getString(R.string.store), R.drawable.ic_search);
         AHBottomNavigationItem item3 = new AHBottomNavigationItem(getString(R.string.catalouge), R.drawable.ic_search);
-        AHBottomNavigationItem item4 = new AHBottomNavigationItem(getString(R.string.contact_manger), R.drawable.ic_search);
+        AHBottomNavigationItem item4 = new AHBottomNavigationItem(getString(R.string.more), R.drawable.ic_nav_more);
 
         binding.ahBottomNav.setTitleState(AHBottomNavigation.TitleState.ALWAYS_SHOW);
         binding.ahBottomNav.setDefaultBackgroundColor(ContextCompat.getColor(this, R.color.white));
