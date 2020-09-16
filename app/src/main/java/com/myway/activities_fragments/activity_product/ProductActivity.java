@@ -61,7 +61,6 @@ public class ProductActivity extends AppCompatActivity implements Listeners.Back
         binding.setLang(lang);
         binding.setBackListener(this);
 
-        initData();
         food_adapter = new Product_Adapter(dataList, this);
 
         binding.recView.setLayoutManager(new LinearLayoutManager(this));
@@ -70,11 +69,7 @@ public class ProductActivity extends AppCompatActivity implements Listeners.Back
 
     }
 
-    private void initData() {
-        dataList = new ArrayList<>();
 
-
-    }
 
     private void getProducts() {
         binding.progBar.setVisibility(View.VISIBLE);
@@ -88,7 +83,7 @@ public class ProductActivity extends AppCompatActivity implements Listeners.Back
                     public void onResponse(Call<ProductDataModel> call, Response<ProductDataModel> response) {
                         binding.progBar.setVisibility(View.GONE);
                         if (response.isSuccessful()) {
-                            dataList.addAll(response.body().getData().getProducts());
+                            dataList.addAll(response.body().getProduct());
 
                             if (dataList.size() > 0) {
                                 food_adapter.notifyDataSetChanged();

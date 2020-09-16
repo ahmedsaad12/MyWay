@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="model"
+            type="com.myway.models.SingleCatalougModel" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -33,7 +35,7 @@
                     android:clickable="false"
                     android:longClickable="false"
                     android:padding="8dp"
-                    android:text="@string/news"
+                    android:text="@{model.title}"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
@@ -60,7 +62,7 @@
                     android:layout_height="200dp"
                     android:layout_gravity="center"
                     android:scaleType="fitXY"
-                    android:src="@drawable/img2" />
+                    image="@{model.image}" />
             </FrameLayout>
 
             <TextView

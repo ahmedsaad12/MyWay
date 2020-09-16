@@ -17,7 +17,7 @@
 
         <variable
             name="contactUs"
-            type="com.myway.models.ContactUsModel" />
+            type="com.myway.models.JoinUsModel" />
 
 <!--        <variable-->
 <!--            name="contactListener"-->
@@ -248,12 +248,13 @@
                             android:background="@color/transparent"
                             android:singleLine="true"
                             android:paddingStart="10dp"
+                            android:inputType="number"
                             android:paddingEnd="10dp"
                             android:textColorHint="@color/gray4"
                             android:textColor="@color/black"
                             android:textSize="15sp"
                             android:hint="@string/write_num_here_contain_14_num"
-                            android:text="@={contactUs.subject}"
+                            android:text="@={contactUs.number}"
                             error="@{contactUs.error_subject}"
                             />
 
@@ -301,7 +302,7 @@
                         android:gravity="top|start"
                         android:padding="10dp"
                         android:inputType="textMultiLine"
-                        android:text="@={contactUs.message}"
+                        android:text="@={contactUs.address}"
                         error="@{contactUs.error_message}"
                         />
 

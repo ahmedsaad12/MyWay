@@ -61,7 +61,7 @@ public class Fragment_More extends Fragment implements Listeners.SettingActions 
         preferences = Preferences.getInstance();
         Paper.init(activity);
         lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
-
+binding.setLang(lang);
         binding.setAction(this);
     }
 

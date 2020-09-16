@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.myway.R;
 import com.myway.activities_fragments.activity_cadua.CaduaActivity;
+import com.myway.activities_fragments.activity_cataloug.CatalougActivity;
 import com.myway.activities_fragments.activity_contact_us.ContactUsActivity;
 import com.myway.activities_fragments.activity_home.HomeActivity;
 import com.myway.activities_fragments.activity_news.NewsActivity;
@@ -106,6 +107,13 @@ public class Fragment_Main extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(activity, CaduaActivity.class);
+                startActivity(intent);
+            }
+        });
+        binding.cardcatalog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(activity, CatalougActivity.class);
                 startActivity(intent);
             }
         });

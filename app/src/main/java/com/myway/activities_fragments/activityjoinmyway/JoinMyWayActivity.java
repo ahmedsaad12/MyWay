@@ -15,6 +15,7 @@ import com.myway.databinding.ActivityJoinMyWayBinding;
 import com.myway.interfaces.Listeners;
 import com.myway.language.Language;
 import com.myway.models.ContactUsModel;
+import com.myway.models.JoinUsModel;
 import com.myway.remote.Api;
 import com.myway.share.Common;
 import com.myway.tags.Tags;
@@ -31,7 +32,7 @@ import retrofit2.Response;
 public class JoinMyWayActivity extends AppCompatActivity implements Listeners.BackListener {
     private ActivityJoinMyWayBinding binding;
     private String lang;
-    private ContactUsModel contactUsModel;
+    private JoinUsModel contactUsModel;
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -48,7 +49,7 @@ public class JoinMyWayActivity extends AppCompatActivity implements Listeners.Ba
 
 
     private void initView() {
-        contactUsModel = new ContactUsModel();
+        contactUsModel = new JoinUsModel();
         binding.setContactUs(contactUsModel);
         Paper.init(this);
         lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
@@ -76,7 +77,7 @@ public class JoinMyWayActivity extends AppCompatActivity implements Listeners.Ba
                 dialog.setCancelable(false);
                 dialog.show();
                 Api.getService(Tags.base_url)
-                        .sendContact(contactUsModel.getName(), contactUsModel.getEmail(), contactUsModel.getSubject(), contactUsModel.getMessage())
+                        .Join(contactUsModel.getName(), contactUsModel.getEmail(), contactUsModel.getNumber(), contactUsModel.getAddress())
                         .enqueue(new Callback<ResponseBody>() {
                             @Override
                             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {

@@ -40,5 +40,7 @@
     <string name="calculate_your_cadua">Calculate Your Cadua</string>
     <string name="to_calculate_your_rewards_please_enter_the_number_of_your_points_here">To calculate your rewards, please enter the number of your points here</string>
     <string name="please_enter_the_number_of_your_points_here">please enter the number of your points here</string>
-    <string name="_20_geneh">20 Geneh</string>
+    <string name="_20_geneh">Geneh</string>
+    <string name="r">ryal</string>
+
 </resources>

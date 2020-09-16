@@ -55,7 +55,6 @@ public class HomeActivity extends AppCompatActivity {
     private void initView() {
         fragmentManager = getSupportFragmentManager();
         preferences = Preferences.getInstance();
-        userModel = preferences.getUserData(this);
         Paper.init(this);
         lang = Paper.book().read("lang", "ar");
         setUpBottomNavigation();

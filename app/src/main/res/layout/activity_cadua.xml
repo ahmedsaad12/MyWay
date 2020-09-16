@@ -126,6 +126,7 @@
                     android:background="@color/gray15" />
 
                 <TextView
+                    android:id="@+id/tvresult"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
@@ -137,7 +138,6 @@
                     android:longClickable="false"
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
-                    android:text="@string/_20_geneh"
                     android:textColor="@color/toolbar"
                     android:textSize="16sp"
                     android:textStyle="bold" />

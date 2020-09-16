@@ -9,7 +9,9 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.myway.R;
+import com.myway.databinding.NewsRowBinding;
 import com.myway.databinding.OffersRowBinding;
+import com.myway.models.SingleNewsModel;
 import com.myway.models.SingleOfferModel;
 
 import java.util.List;
@@ -17,15 +19,15 @@ import java.util.Locale;
 
 import io.paperdb.Paper;
 
-public class Offers_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class News_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<SingleOfferModel> orderlist;
+    private List<SingleNewsModel> orderlist;
     private Context context;
     private LayoutInflater inflater;
     private String lang;
     private int i = -1;
 
-    public Offers_Adapter(List<SingleOfferModel> orderlist, Context context) {
+    public News_Adapter(List<SingleNewsModel> orderlist, Context context) {
         this.orderlist = orderlist;
         this.context = context;
         inflater = LayoutInflater.from(context);
@@ -38,7 +40,7 @@ public class Offers_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
 
-        OffersRowBinding binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.offers_row, parent, false);
+        NewsRowBinding binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.news_row, parent, false);
         return new EventsHolder(binding);
 
 
@@ -63,9 +65,9 @@ public class Offers_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
 
     public class EventsHolder extends RecyclerView.ViewHolder {
-        public OffersRowBinding binding;
+        public NewsRowBinding binding;
 
-        public EventsHolder(@NonNull OffersRowBinding binding) {
+        public EventsHolder(@NonNull NewsRowBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
 

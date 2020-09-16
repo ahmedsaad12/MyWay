@@ -9,8 +9,9 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.myway.R;
+import com.myway.databinding.CatlougRowBinding;
 import com.myway.databinding.OffersRowBinding;
-import com.myway.models.MarketCatogryModel;
+import com.myway.models.SingleCatalougModel;
 
 import java.util.List;
 import java.util.Locale;
@@ -19,13 +20,13 @@ import io.paperdb.Paper;
 
 public class Cataloug_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<MarketCatogryModel.Data> orderlist;
+    private List<SingleCatalougModel> orderlist;
     private Context context;
     private LayoutInflater inflater;
     private String lang;
     private int i = -1;
 
-    public Cataloug_Adapter(List<MarketCatogryModel.Data> orderlist, Context context) {
+    public Cataloug_Adapter(List<SingleCatalougModel> orderlist, Context context) {
         this.orderlist = orderlist;
         this.context = context;
         inflater = LayoutInflater.from(context);
@@ -38,7 +39,7 @@ public class Cataloug_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
 
-        OffersRowBinding binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.offers_row, parent, false);
+        CatlougRowBinding binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.catloug_row, parent, false);
         return new EventsHolder(binding);
 
 
@@ -49,6 +50,7 @@ public class Cataloug_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
 
         EventsHolder msgRightHolder = (EventsHolder) holder;
+        msgRightHolder.binding.setModel(orderlist.get(i));
 
 //        Liked_Adapter comments_adapter = new Liked_Adapter(orderlist, context);
 //        msgRightHolder.binding.recliked.setLayoutManager(new LinearLayoutManager(context, RecyclerView.HORIZONTAL, false));
@@ -63,9 +65,9 @@ public class Cataloug_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
 
     public class EventsHolder extends RecyclerView.ViewHolder {
-        public OffersRowBinding binding;
+        public CatlougRowBinding binding;
 
-        public EventsHolder(@NonNull OffersRowBinding binding) {
+        public EventsHolder(@NonNull CatlougRowBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
 

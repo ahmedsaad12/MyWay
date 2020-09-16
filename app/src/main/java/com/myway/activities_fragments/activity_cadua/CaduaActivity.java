@@ -18,6 +18,7 @@ import com.myway.databinding.ActivityContactUsBinding;
 import com.myway.interfaces.Listeners;
 import com.myway.language.Language;
 import com.myway.models.ContactUsModel;
+import com.myway.preferences.Preferences;
 import com.myway.remote.Api;
 import com.myway.share.Common;
 import com.myway.tags.Tags;
@@ -34,7 +35,7 @@ import retrofit2.Response;
 public class CaduaActivity extends AppCompatActivity implements Listeners.BackListener {
     private ActivityCaduaBinding binding;
     private String lang;
-
+private Preferences preferences;
     @Override
     protected void attachBaseContext(Context newBase) {
         Paper.init(newBase);
@@ -50,6 +51,7 @@ public class CaduaActivity extends AppCompatActivity implements Listeners.BackLi
 
 
     private void initView() {
+        preferences=Preferences.getInstance();
         Paper.init(this);
         lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
         binding.setLang(lang);
@@ -68,28 +70,43 @@ binding.edtcadua.addTextChangedListener(new TextWatcher() {
     @Override
     public void afterTextChanged(Editable editable) {
 int num=Integer.parseInt(binding.edtcadua.getText().toString());
+int level=0;
 if(num>=200&&num<=599){
-
+level=3;
 }
 else if(num>=600&&num<=1199){
+    level=6;
 
 }
 else if(num>=1200&&num<=2399){
+    level=9;
 
 }
 else if(num>=2400&&num<=3999){
+    level=12;
 
 }
 else if(num>=4000&&num<=6599){
+    level=15;
 
 }
 else if(num>=6600&&num<=9999){
+    level=18;
 
 }
 else if(num>=10000){
+    level=21;
 
 }
-    }
+if(preferences.getCountry(CaduaActivity.this).equals("saudi")){
+binding.tvresult.setText((num*level*1.4)+getResources().getString(R.string.r));
+}
+
+
+    else{
+    binding.tvresult.setText((num*level*1.4)+getResources().getString(R.string._20_geneh));
+
+}}
 });
 
 
