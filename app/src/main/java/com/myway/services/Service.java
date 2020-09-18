@@ -7,6 +7,7 @@ import com.myway.models.OfferDataModel;
 import com.myway.models.ProductDataModel;
 import com.myway.models.SettingDataModel;
 import com.myway.models.SettingModel;
+import com.myway.models.Slider_Model;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -56,4 +57,8 @@ public interface Service {
     );
     @GET("api/setting")
     Call<SettingModel> getSetting();
+    @GET("api/slider")
+    Call<Slider_Model> get_slider();
+
+
 }

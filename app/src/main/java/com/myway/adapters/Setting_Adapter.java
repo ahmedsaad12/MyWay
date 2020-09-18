@@ -28,7 +28,6 @@ public class Setting_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private Context context;
     private LayoutInflater inflater;
     private String lang;
-    private int i = -1;
 
     public Setting_Adapter(List<SingleSettingModel> orderlist, Context context) {
         this.orderlist = orderlist;

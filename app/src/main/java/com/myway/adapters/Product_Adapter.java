@@ -50,7 +50,7 @@ public class Product_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
 
         EventsHolder msgRightHolder = (EventsHolder) holder;
-        msgRightHolder.binding.setModel(orderlist.get(i));
+        msgRightHolder.binding.setModel(orderlist.get(position));
 //        Liked_Adapter comments_adapter = new Liked_Adapter(orderlist, context);
 //        msgRightHolder.binding.recliked.setLayoutManager(new LinearLayoutManager(context, RecyclerView.HORIZONTAL, false));
 //        msgRightHolder.binding.recliked.setAdapter(comments_adapter);
