@@ -71,7 +71,7 @@
                     android:clickable="false"
                     android:longClickable="false"
                     android:textSize="16sp"
-                    android:text="@string/contact_manger"
+                    android:text="@string/join_my_way_company"
                     />
             </LinearLayout>
         </androidx.appcompat.widget.Toolbar>

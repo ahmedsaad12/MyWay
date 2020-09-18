@@ -103,7 +103,7 @@ msgRightHolder.binding.btnSend.setOnClickListener(new View.OnClickListener() {
 
             System.out.println("--pdf downloaded--ok--"+url.getPath());
         } catch (Exception e) {
-     Log.e("kkkkkkk",e.getCause().toString());
+     Log.e("kkkkkkk",e.toString());
 
         }}
 });

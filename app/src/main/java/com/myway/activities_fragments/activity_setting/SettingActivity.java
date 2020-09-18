@@ -11,12 +11,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.myway.R;
 import com.myway.adapters.News_Adapter;
+import com.myway.adapters.Setting_Adapter;
 import com.myway.databinding.ActivityNewsBinding;
 import com.myway.databinding.ActivitySettingBinding;
 import com.myway.interfaces.Listeners;
 import com.myway.language.Language;
 import com.myway.models.NewsDataModel;
+import com.myway.models.SettingDataModel;
 import com.myway.models.SingleNewsModel;
+import com.myway.models.SingleSettingModel;
 import com.myway.preferences.Preferences;
 import com.myway.remote.Api;
 import com.myway.tags.Tags;
@@ -36,8 +39,8 @@ public class SettingActivity extends AppCompatActivity implements Listeners.Back
     private String lang;
     private Preferences preferences;
 
-    private List<SingleNewsModel> dataList;
-    private News_Adapter news_adapter;
+    private List<SingleSettingModel> dataList;
+    private Setting_Adapter news_adapter;
 
     protected void attachBaseContext(Context newBase) {
         Paper.init(newBase);
@@ -61,7 +64,7 @@ public class SettingActivity extends AppCompatActivity implements Listeners.Back
         binding.setLang(lang);
         binding.setBackListener(this);
 
-        news_adapter = new News_Adapter
+        news_adapter = new Setting_Adapter
                 (dataList, this);
 
         binding.recView.setLayoutManager(new LinearLayoutManager(this));
@@ -75,13 +78,13 @@ public class SettingActivity extends AppCompatActivity implements Listeners.Back
         news_adapter.notifyDataSetChanged();
 
         Api.getService(Tags.base_url)
-                .getnews("all", preferences.getCountry(this))
-                .enqueue(new Callback<NewsDataModel>() {
+                .getsetting("all", preferences.getCountry(this))
+                .enqueue(new Callback<SettingDataModel>() {
                     @Override
-                    public void onResponse(Call<NewsDataModel> call, Response<NewsDataModel> response) {
+                    public void onResponse(Call<SettingDataModel> call, Response<SettingDataModel> response) {
                         binding.progBar.setVisibility(View.GONE);
                         if (response.isSuccessful()) {
-                            dataList.addAll(response.body().getNews());
+                            dataList.addAll(response.body().getClient_system());
 
                             if (dataList.size() > 0) {
                                 news_adapter.notifyDataSetChanged();
@@ -110,7 +113,7 @@ public class SettingActivity extends AppCompatActivity implements Listeners.Back
                     }
 
                     @Override
-                    public void onFailure(Call<NewsDataModel> call, Throwable t) {
+                    public void onFailure(Call<SettingDataModel> call, Throwable t) {
                         try {
                             binding.progBar.setVisibility(View.GONE);
 

@@ -5,6 +5,7 @@ import com.myway.models.CatalougDataModel;
 import com.myway.models.NewsDataModel;
 import com.myway.models.OfferDataModel;
 import com.myway.models.ProductDataModel;
+import com.myway.models.SettingDataModel;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -43,6 +44,10 @@ public interface Service {
     @GET("api/news")
     Call<NewsDataModel> getnews(@Query("new_id") String new_id,
                                 @Query("country") String country
+    );
+    @GET("api/client-system")
+    Call<SettingDataModel> getsetting(@Query("client_sestem_id") String client_sestem_id,
+                                      @Query("country") String country
     );
     @GET("api/catalog")
     Call<CatalougDataModel> getcataloug(@Query("catalog_id") String catalog_id,

@@ -5,9 +5,9 @@ import java.util.List;
 
 public class SettingDataModel implements Serializable {
 
-    private List<SingleNewsModel> news;
+    private List<SingleSettingModel> Client_system;
 
-    public List<SingleNewsModel> getNews() {
-        return news;
+    public List<SingleSettingModel> getClient_system() {
+        return Client_system;
     }
 }
