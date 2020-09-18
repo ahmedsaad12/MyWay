@@ -20,4 +20,8 @@ public class SingleOfferModel implements Serializable {
     public String getImage() {
         return image;
     }
+
+    public String getContent() {
+        return content;
+    }
 }

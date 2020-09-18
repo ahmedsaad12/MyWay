@@ -20,4 +20,8 @@ public class SingleNewsModel implements Serializable {
     public String getImage() {
         return image;
     }
+
+    public String getContent() {
+        return content;
+    }
 }

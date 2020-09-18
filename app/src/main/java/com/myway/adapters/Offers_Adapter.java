@@ -1,7 +1,9 @@
 package com.myway.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -9,6 +11,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.myway.R;
+import com.myway.activities_fragments.activity_detilas.DetialsActivity;
 import com.myway.databinding.OffersRowBinding;
 import com.myway.models.SingleOfferModel;
 
@@ -50,6 +53,17 @@ public class Offers_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         EventsHolder msgRightHolder = (EventsHolder) holder;
         msgRightHolder.binding.setModel(orderlist.get(position));
+        msgRightHolder.binding.tvread.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(context, DetialsActivity.class);
+                intent.putExtra("title",  orderlist.get(msgRightHolder.getLayoutPosition()).getTitle()+"");
+                intent.putExtra("content",  orderlist.get(msgRightHolder.getLayoutPosition()).getContent()+"");
+                intent.putExtra("image",  orderlist.get(msgRightHolder.getLayoutPosition()).getImage()+"");
+
+                context.startActivity(intent);
+            }
+        });
 //        Liked_Adapter comments_adapter = new Liked_Adapter(orderlist, context);
 //        msgRightHolder.binding.recliked.setLayoutManager(new LinearLayoutManager(context, RecyclerView.HORIZONTAL, false));
 //        msgRightHolder.binding.recliked.setAdapter(comments_adapter);

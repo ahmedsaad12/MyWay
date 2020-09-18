@@ -1,9 +1,14 @@
 package com.myway.activities_fragments.activity_home;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentManager;
@@ -34,12 +39,35 @@ public class HomeActivity extends AppCompatActivity {
     private UserModel userModel;
     private String lang;
     private String token;
-
+    private final String write_perm = Manifest.permission.WRITE_EXTERNAL_STORAGE;
+    private final int write_req = 100;
+    private boolean isPermissionGranted = false;
     protected void attachBaseContext(Context newBase) {
         Paper.init(newBase);
         super.attachBaseContext(Language.updateResources(newBase, Paper.book().read("lang", "ar")));
     }
+    private void checkWritePermission() {
 
+        if (ContextCompat.checkSelfPermission(this, write_perm) != PackageManager.PERMISSION_GRANTED) {
+
+
+            isPermissionGranted = false;
+
+            ActivityCompat.requestPermissions(this, new String[]{write_perm}, write_req);
+
+
+        } else {
+            isPermissionGranted = true;
+        }
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+         if (requestCode == write_req && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED ) {
+            isPermissionGranted = true;
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +77,7 @@ public class HomeActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             displayFragmentMain();
         }
-
+checkWritePermission();
     }
 
     private void initView() {
@@ -66,8 +94,8 @@ public class HomeActivity extends AppCompatActivity {
     private void setUpBottomNavigation() {
 
         AHBottomNavigationItem item1 = new AHBottomNavigationItem(getString(R.string.home), R.drawable.ic_nav_home);
-        AHBottomNavigationItem item2 = new AHBottomNavigationItem(getString(R.string.store), R.drawable.ic_search);
-        AHBottomNavigationItem item3 = new AHBottomNavigationItem(getString(R.string.catalouge), R.drawable.ic_search);
+        AHBottomNavigationItem item2 = new AHBottomNavigationItem(getString(R.string.store), R.drawable.ic_down_arrow);
+        AHBottomNavigationItem item3 = new AHBottomNavigationItem(getString(R.string.catalouge), R.drawable.ic_big);
         AHBottomNavigationItem item4 = new AHBottomNavigationItem(getString(R.string.more), R.drawable.ic_nav_more);
 
         binding.ahBottomNav.setTitleState(AHBottomNavigation.TitleState.ALWAYS_SHOW);

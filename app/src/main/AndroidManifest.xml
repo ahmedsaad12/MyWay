@@ -52,6 +52,20 @@
 
         </activity>
         <activity
+            android:name=".activities_fragments.activity_detilas.DetialsActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize">
+
+        </activity>
+        <activity
+            android:name=".activities_fragments.activity_about_app.AboutAppActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize">
+
+        </activity>
+        <activity
             android:name=".activities_fragments.activity_cadua.CaduaActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"

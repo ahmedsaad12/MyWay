@@ -39,10 +39,10 @@
     <string name="dowanload_pdf">حمل pdf</string>
     <string name="show_cataloug">مشاهدة الكتالوج</string>
     <string name="calculate_your_cadua">احسب هديتك</string>
-    <string name="to_calculate_your_rewards_please_enter_the_number_of_your_points_here">To calculate your rewards, please enter the number of your points here</string>
-    <string name="please_enter_the_number_of_your_points_here">please enter the number of your points here</string>
-    <string name="_20_geneh">20 Geneh</string>
+    <string name="to_calculate_your_rewards_please_enter_the_number_of_your_points_here">لحساب مكافاتك ادخل عدد نقاطك</string>
+    <string name="please_enter_the_number_of_your_points_here">من فضلك ادخل عدد النقاط هنا</string>
+    <string name="_20_geneh">جنيه</string>
     <string name="r">ريال</string>
-    <string name="more">More</string>
+    <string name="more">المزيد</string>
 
 </resources>
