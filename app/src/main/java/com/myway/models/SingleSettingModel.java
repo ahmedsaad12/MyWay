@@ -2,13 +2,12 @@ package com.myway.models;
 
 import java.io.Serializable;
 
-public class SingleCatalougModel implements Serializable {
+public class SingleSettingModel implements Serializable {
 
     private int id;
     private String title;
     private String image;
     private String content;
-    private String file;
 
     public int getId() {
         return id;
@@ -20,13 +19,5 @@ public class SingleCatalougModel implements Serializable {
 
     public String getImage() {
         return image;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public String getFile() {
-        return file;
     }
 }

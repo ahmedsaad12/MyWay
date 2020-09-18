@@ -41,12 +41,13 @@
 
                 <Button
                     android:id="@+id/btnSend"
-                    android:layout_width="180dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
                     android:background="@drawable/smallbrimary_bg"
                     android:gravity="center"
-                    android:paddingLeft="8dp"
+                    android:paddingLeft="18dp"
+                    android:paddingRight="18dp"
                     android:text="@string/dowanload_pdf"
                     android:textColor="@color/white"
                     android:textSize="15sp" />
@@ -66,11 +67,11 @@
             </FrameLayout>
 
             <TextView
+                android:id="@+id/tvshow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
+
                 android:background="@color/toolbar"
                 android:clickable="false"
                 android:gravity="center"

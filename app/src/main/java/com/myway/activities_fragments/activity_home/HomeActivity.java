@@ -75,7 +75,7 @@ public class HomeActivity extends AppCompatActivity {
         binding.ahBottomNav.setTitleTextSizeInSp(13, 13);
         binding.ahBottomNav.setForceTint(true);
         binding.ahBottomNav.setAccentColor(ContextCompat.getColor(this, R.color.colorPrimary));
-        binding.ahBottomNav.setInactiveColor(ContextCompat.getColor(this, R.color.white));
+        binding.ahBottomNav.setInactiveColor(ContextCompat.getColor(this, R.color.gray15));
 
         binding.ahBottomNav.addItem(item1);
         binding.ahBottomNav.addItem(item2);

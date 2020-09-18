@@ -24,6 +24,7 @@ import com.myway.activities_fragments.activity_home.HomeActivity;
 import com.myway.activities_fragments.activity_news.NewsActivity;
 import com.myway.activities_fragments.activity_offers.OffersActivity;
 import com.myway.activities_fragments.activity_product.ProductActivity;
+import com.myway.activities_fragments.activity_setting.SettingActivity;
 import com.myway.activities_fragments.activityjoinmyway.JoinMyWayActivity;
 import com.myway.adapters.Product_Adapter;
 import com.myway.databinding.FragmnetMainBinding;
@@ -114,6 +115,13 @@ public class Fragment_Main extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(activity, CatalougActivity.class);
+                startActivity(intent);
+            }
+        });
+        binding.cardset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(activity, SettingActivity.class);
                 startActivity(intent);
             }
         });
