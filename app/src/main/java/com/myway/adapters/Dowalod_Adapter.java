@@ -1,14 +1,18 @@
 package com.myway.adapters;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.FileProvider;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -61,10 +65,22 @@ public class Dowalod_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
      msgRightHolder.itemView.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View view) {
-             Intent intent = new Intent(Intent.ACTION_VIEW);
-             intent.setDataAndType(Uri.parse(Environment.getExternalStorageDirectory().toString()+"/foldr/" + files[msgRightHolder.getLayoutPosition()].getName()), "application/pdf");
-             intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-             context.startActivity(intent);
+             File file = new File(Environment.getExternalStorageDirectory().toString()+"/foldr/" + files[msgRightHolder.getLayoutPosition()].getName());
+             if (file.exists()) //Checking if the file exists or not
+             {
+                // Uri photoURI = FileProvider.getUriForFile(context, context.getApplicationContext().getPackageName() + ".provider",file);
+
+                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(file.getPath()));
+                 intent.setDataAndType(Uri.parse(file.getPath()), "application/pdf");
+                 context.startActivity(intent);
+                 //Starting the pdf viewer
+             } else {
+
+                 Toast.makeText(context, "The file not exists! ", Toast.LENGTH_SHORT).show();
+
+             }
+           //  context.startActivity(intent);
+
          }
      });
 //        Liked_Adapter comments_adapter = new Liked_Adapter(orderlist, context);
