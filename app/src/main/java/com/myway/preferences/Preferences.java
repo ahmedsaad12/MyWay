@@ -34,7 +34,7 @@ public class Preferences {
 
     public String getCountry(Context context) {
         SharedPreferences preferences = context.getSharedPreferences("country", Context.MODE_PRIVATE);
-        String country = preferences.getString("state", "egypt");
+        String country = preferences.getString("state", "0");
         return country;
     }
 

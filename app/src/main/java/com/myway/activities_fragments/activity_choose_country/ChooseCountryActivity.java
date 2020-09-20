@@ -3,6 +3,7 @@ package com.myway.activities_fragments.activity_choose_country;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -46,22 +47,39 @@ public class ChooseCountryActivity extends AppCompatActivity {
        binding.llegypt.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
+               binding.fr.setBackground(getResources().getDrawable(R.drawable.ic_checked));
+               binding.fr2.setBackground(getResources().getDrawable(R.drawable.circle_bg));
+               new Handler().postDelayed(new Runnable() {
+                   @Override
+                   public void run() {
                preferences.create_update_country(ChooseCountryActivity.this,"egypt");
 
                Intent intent=new Intent(ChooseCountryActivity.this, HomeActivity.class);
 
                startActivity(intent);
                finish();
+                   }
+               },1000);
            }
        });
         binding.llsuadia.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
-                preferences.create_update_country(ChooseCountryActivity.this,"saudi");
-                Intent intent=new Intent(ChooseCountryActivity.this, HomeActivity.class);
+                binding.fr2.setBackground(getResources().getDrawable(R.drawable.ic_checked));
+                binding.fr.setBackground(getResources().getDrawable(R.drawable.circle_bg));
 
-                startActivity(intent);
-                finish();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        preferences.create_update_country(ChooseCountryActivity.this,"saudi");
+                        Intent intent=new Intent(ChooseCountryActivity.this, HomeActivity.class);
+
+                        startActivity(intent);
+                        finish();
+                    }
+                },1000);
+
             }
         });
     }
