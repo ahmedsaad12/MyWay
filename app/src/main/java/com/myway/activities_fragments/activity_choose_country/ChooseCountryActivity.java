@@ -45,21 +45,7 @@ public class ChooseCountryActivity extends AppCompatActivity {
         Paper.init(this);
         lang = Paper.book().read("lang", "ar");
         binding.setLang(lang);
-        binding.fr.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                binding.fr2.setChecked(false);
-                binding.fr.setChecked(true);
-            }
-        });
-        binding.fr2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                binding.fr.setChecked(false);
-                binding.fr2.setChecked(true);
 
-            }
-        });
         binding.fr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,24 +60,24 @@ public class ChooseCountryActivity extends AppCompatActivity {
                 binding.fr2.setChecked(true);
             }
         });
-       binding.llegypt.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-              binding.fr.setChecked(true);
-              binding.fr2.setChecked(false);
-               new Handler().postDelayed(new Runnable() {
-                   @Override
-                   public void run() {
-               preferences.create_update_country(ChooseCountryActivity.this,"egypt");
+        binding.llegypt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.fr.setChecked(true);
+                binding.fr2.setChecked(false);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        preferences.create_update_country(ChooseCountryActivity.this, "egypt");
 
-               Intent intent=new Intent(ChooseCountryActivity.this, HomeActivity.class);
+                        Intent intent = new Intent(ChooseCountryActivity.this, HomeActivity.class);
 
-               startActivity(intent);
-               finish();
-                   }
-               },6000);
-           }
-       });
+                        startActivity(intent);
+                        finish();
+                    }
+                }, 6000);
+            }
+        });
         binding.llsuadia.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -101,13 +87,13 @@ public class ChooseCountryActivity extends AppCompatActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        preferences.create_update_country(ChooseCountryActivity.this,"saudi");
-                        Intent intent=new Intent(ChooseCountryActivity.this, HomeActivity.class);
+                        preferences.create_update_country(ChooseCountryActivity.this, "saudi");
+                        Intent intent = new Intent(ChooseCountryActivity.this, HomeActivity.class);
 
                         startActivity(intent);
                         finish();
                     }
-                },6000);
+                }, 6000);
 
             }
         });
