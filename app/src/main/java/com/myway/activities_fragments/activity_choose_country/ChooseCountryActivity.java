@@ -47,8 +47,8 @@ public class ChooseCountryActivity extends AppCompatActivity {
        binding.llegypt.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               binding.fr.setBackgroundDrawable(getResources().getDrawable(R.drawable.ic_checked));
-               binding.fr2.setBackgroundDrawable(getResources().getDrawable(R.drawable.circle_bg));
+              binding.fr.setChecked(true);
+              binding.fr2.setChecked(false);
                new Handler().postDelayed(new Runnable() {
                    @Override
                    public void run() {
@@ -66,9 +66,8 @@ public class ChooseCountryActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                binding.fr2.setBackgroundDrawable(getResources().getDrawable(R.drawable.ic_checked));
-                binding.fr.setBackgroundDrawable(getResources().getDrawable(R.drawable.circle_bg));
-
+                binding.fr2.setChecked(true);
+                binding.fr.setChecked(false);
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
