@@ -95,7 +95,7 @@
                                 <ImageView
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:src="@drawable/flag_eg" />
+                                    android:src="@drawable/egypt" />
                             </FrameLayout>
 
                             <TextView
@@ -146,7 +146,7 @@
                                 <ImageView
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:src="@drawable/flag_sa" />
+                                    android:src="@drawable/saudi" />
                             </FrameLayout>
 
                             <TextView

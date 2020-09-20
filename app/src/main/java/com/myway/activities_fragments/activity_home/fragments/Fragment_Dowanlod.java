@@ -73,24 +73,26 @@ public class Fragment_Dowanlod extends Fragment {
 
         binding.progBarCategory.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(activity, R.color.colorPrimary), PorterDuff.Mode.SRC_IN);
 
-getfiles();
+        getfiles();
     }
 
     private void getfiles() {
-        String path =  Environment.getExternalStorageDirectory().toString()+"/foldr";
+        String path = Environment.getExternalStorageDirectory().toString() + "/foldr";
         Log.d("Files", "Path: " + path);
         File directory = new File(path);
-        File[] files = directory.listFiles();
-        Dowalod_Adapter dowalod_adapter=new Dowalod_Adapter(files,activity);
-        binding.recViewStatus.setLayoutManager(new LinearLayoutManager(activity));
-        binding.recViewStatus.setAdapter(dowalod_adapter);
-
+        if(directory.listFiles()!=null) {
+            File[] files = directory.listFiles();
+            Dowalod_Adapter dowalod_adapter = new Dowalod_Adapter(files, activity);
+            binding.recViewStatus.setLayoutManager(new LinearLayoutManager(activity));
+            binding.recViewStatus.setAdapter(dowalod_adapter);
+        }
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        if(activity!=null){
-        getfiles();}
+        if (activity != null) {
+            getfiles();
+        }
     }
 }
