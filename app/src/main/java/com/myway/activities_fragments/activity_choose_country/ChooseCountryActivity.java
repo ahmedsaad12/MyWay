@@ -51,6 +51,17 @@ public class ChooseCountryActivity extends AppCompatActivity {
             public void onClick(View view) {
                 binding.fr2.setChecked(false);
                 binding.fr.setChecked(true);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        preferences.create_update_country(ChooseCountryActivity.this, "egypt");
+
+                        Intent intent = new Intent(ChooseCountryActivity.this, HomeActivity.class);
+
+                        startActivity(intent);
+                        finish();
+                    }
+                }, 1000);
             }
         });
         binding.fr2.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +69,16 @@ public class ChooseCountryActivity extends AppCompatActivity {
             public void onClick(View view) {
                 binding.fr.setChecked(false);
                 binding.fr2.setChecked(true);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        preferences.create_update_country(ChooseCountryActivity.this, "saudi");
+                        Intent intent = new Intent(ChooseCountryActivity.this, HomeActivity.class);
+
+                        startActivity(intent);
+                        finish();
+                    }
+                }, 1000);
             }
         });
         binding.llegypt.setOnClickListener(new View.OnClickListener() {
@@ -75,7 +96,7 @@ public class ChooseCountryActivity extends AppCompatActivity {
                         startActivity(intent);
                         finish();
                     }
-                }, 6000);
+                }, 1000);
             }
         });
         binding.llsuadia.setOnClickListener(new View.OnClickListener() {
@@ -93,7 +114,7 @@ public class ChooseCountryActivity extends AppCompatActivity {
                         startActivity(intent);
                         finish();
                     }
-                }, 6000);
+                }, 1000);
 
             }
         });
