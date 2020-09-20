@@ -67,7 +67,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="8dp"
-
+                            android:background="@color/white"
                             android:orientation="horizontal">
 
                             <androidx.cardview.widget.CardView
@@ -81,7 +81,7 @@
                                     android:id="@+id/fr"
                                     android:layout_width="45dp"
                                     android:layout_height="45dp"
-                                    android:background="@drawable/circle_bg"></FrameLayout>
+                                    android:background="@drawable/ic_checked"></FrameLayout>
 
 
                             </androidx.cardview.widget.CardView>
@@ -118,7 +118,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="8dp"
-
+                            android:background="@color/white"
                             android:orientation="horizontal">
 
                             <androidx.cardview.widget.CardView

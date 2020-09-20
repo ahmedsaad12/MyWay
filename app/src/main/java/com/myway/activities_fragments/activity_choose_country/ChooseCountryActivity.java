@@ -47,8 +47,8 @@ public class ChooseCountryActivity extends AppCompatActivity {
        binding.llegypt.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               binding.fr.setBackground(getResources().getDrawable(R.drawable.ic_checked));
-               binding.fr2.setBackground(getResources().getDrawable(R.drawable.circle_bg));
+               binding.fr.setBackgroundDrawable(getResources().getDrawable(R.drawable.ic_checked));
+               binding.fr2.setBackgroundDrawable(getResources().getDrawable(R.drawable.circle_bg));
                new Handler().postDelayed(new Runnable() {
                    @Override
                    public void run() {
@@ -59,15 +59,15 @@ public class ChooseCountryActivity extends AppCompatActivity {
                startActivity(intent);
                finish();
                    }
-               },1000);
+               },6000);
            }
        });
         binding.llsuadia.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                binding.fr2.setBackground(getResources().getDrawable(R.drawable.ic_checked));
-                binding.fr.setBackground(getResources().getDrawable(R.drawable.circle_bg));
+                binding.fr2.setBackgroundDrawable(getResources().getDrawable(R.drawable.ic_checked));
+                binding.fr.setBackgroundDrawable(getResources().getDrawable(R.drawable.circle_bg));
 
                 new Handler().postDelayed(new Runnable() {
                     @Override
@@ -78,7 +78,7 @@ public class ChooseCountryActivity extends AppCompatActivity {
                         startActivity(intent);
                         finish();
                     }
-                },1000);
+                },6000);
 
             }
         });
