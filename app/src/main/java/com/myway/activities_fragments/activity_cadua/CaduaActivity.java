@@ -35,7 +35,8 @@ import retrofit2.Response;
 public class CaduaActivity extends AppCompatActivity implements Listeners.BackListener {
     private ActivityCaduaBinding binding;
     private String lang;
-private Preferences preferences;
+    private Preferences preferences;
+
     @Override
     protected void attachBaseContext(Context newBase) {
         Paper.init(newBase);
@@ -51,63 +52,60 @@ private Preferences preferences;
 
 
     private void initView() {
-        preferences=Preferences.getInstance();
+        preferences = Preferences.getInstance();
         Paper.init(this);
         lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
         binding.setLang(lang);
         binding.setBackListener(this);
-binding.edtcadua.addTextChangedListener(new TextWatcher() {
-    @Override
-    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        binding.edtcadua.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-    }
+            }
 
-    @Override
-    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-    }
+            }
 
-    @Override
-    public void afterTextChanged(Editable editable) {
-int num=Integer.parseInt(binding.edtcadua.getText().toString());
-int level=0;
-if(num>=200&&num<=599){
-level=3;
-}
-else if(num>=600&&num<=1199){
-    level=6;
-
-}
-else if(num>=1200&&num<=2399){
-    level=9;
-
-}
-else if(num>=2400&&num<=3999){
-    level=12;
-
-}
-else if(num>=4000&&num<=6599){
-    level=15;
-
-}
-else if(num>=6600&&num<=9999){
-    level=18;
-
-}
-else if(num>=10000){
-    level=21;
-
-}
-if(preferences.getCountry(CaduaActivity.this).equals("saudi")){
-binding.tvresult.setText((num*level*1.4)+getResources().getString(R.string.r));
-}
+            @Override
+            public void afterTextChanged(Editable editable) {
+                try {
 
 
-    else{
-    binding.tvresult.setText((num*level*1.4)+getResources().getString(R.string._20_geneh));
+                    int num = Integer.parseInt(binding.edtcadua.getText().toString());
+                    int level = 0;
+                    if (num >= 200 && num <= 599) {
+                        level = 3;
+                    } else if (num >= 600 && num <= 1199) {
+                        level = 6;
 
-}}
-});
+                    } else if (num >= 1200 && num <= 2399) {
+                        level = 9;
+
+                    } else if (num >= 2400 && num <= 3999) {
+                        level = 12;
+
+                    } else if (num >= 4000 && num <= 6599) {
+                        level = 15;
+
+                    } else if (num >= 6600 && num <= 9999) {
+                        level = 18;
+
+                    } else if (num >= 10000) {
+                        level = 21;
+
+                    }
+                    if (preferences.getCountry(CaduaActivity.this).equals("saudi")) {
+                        binding.tvresult.setText((num * level * 1.4) + getResources().getString(R.string.r));
+                    } else {
+                        binding.tvresult.setText((num * level * 1.4) + getResources().getString(R.string._20_geneh));
+
+                    }
+                } catch (Exception e) {
+                }
+            }
+        });
 
 
     }
@@ -117,7 +115,6 @@ binding.tvresult.setText((num*level*1.4)+getResources().getString(R.string.r));
     public void back() {
         finish();
     }
-
 
 
 }
