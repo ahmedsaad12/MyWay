@@ -75,7 +75,6 @@
                                 android:id="@+id/fr"
                                 android:layout_width="45dp"
                                 android:layout_height="45dp"
-                                android:clickable="false"
                                 android:layout_gravity="center_vertical"
                                 android:button="@drawable/checkbox_bg"></CheckBox>
 
