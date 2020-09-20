@@ -49,12 +49,29 @@ public class ChooseCountryActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 binding.fr2.setChecked(false);
+                binding.fr.setChecked(true);
             }
         });
         binding.fr2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 binding.fr.setChecked(false);
+                binding.fr2.setChecked(true);
+
+            }
+        });
+        binding.fr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.fr2.setChecked(false);
+                binding.fr.setChecked(true);
+            }
+        });
+        binding.fr2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.fr.setChecked(false);
+                binding.fr2.setChecked(true);
             }
         });
        binding.llegypt.setOnClickListener(new View.OnClickListener() {
