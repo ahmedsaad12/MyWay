@@ -31,13 +31,13 @@ import io.paperdb.Paper;
 
 public class Dowalod_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private  File[] files ;
+    private File[] files;
     private Context context;
     private LayoutInflater inflater;
     private String lang;
     private int i = -1;
 
-    public Dowalod_Adapter( File[] files , Context context) {
+    public Dowalod_Adapter(File[] files, Context context) {
         this.files = files;
         this.context = context;
         inflater = LayoutInflater.from(context);
@@ -62,27 +62,31 @@ public class Dowalod_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         EventsHolder msgRightHolder = (EventsHolder) holder;
         msgRightHolder.binding.setTitle(files[position].getName());
-     msgRightHolder.itemView.setOnClickListener(new View.OnClickListener() {
-         @Override
-         public void onClick(View view) {
-             File file = new File(Environment.getExternalStorageDirectory().toString()+"/foldr/" + files[msgRightHolder.getLayoutPosition()].getName());
-             if (file.exists()) //Checking if the file exists or not
-             {
-                // Uri photoURI = FileProvider.getUriForFile(context, context.getApplicationContext().getPackageName() + ".provider",file);
+        msgRightHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                File file = new File(Environment.getExternalStorageDirectory().toString() + "/foldr/" + files[msgRightHolder.getLayoutPosition()].getName());
+                if (file.exists()) //Checking if the file exists or not
+                {
+                    // Uri photoURI = FileProvider.getUriForFile(context, context.getApplicationContext().getPackageName() + ".provider",file);
+                    try {
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.fromFile(file));
+                        intent.setDataAndType(Uri.parse(file.getPath()), "application/pdf");
+                        context.startActivity(intent);
+                    } catch (Exception e) {
 
-                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(file.getPath()));
-                 intent.setDataAndType(Uri.parse(file.getPath()), "application/pdf");
-                 context.startActivity(intent);
-                 //Starting the pdf viewer
-             } else {
+                    }
 
-                 Toast.makeText(context, "The file not exists! ", Toast.LENGTH_SHORT).show();
+                    //Starting the pdf viewer
+                } else {
 
-             }
-           //  context.startActivity(intent);
+                    Toast.makeText(context, "The file not exists! ", Toast.LENGTH_SHORT).show();
 
-         }
-     });
+                }
+                //  context.startActivity(intent);
+
+            }
+        });
 //        Liked_Adapter comments_adapter = new Liked_Adapter(orderlist, context);
 //        msgRightHolder.binding.recliked.setLayoutManager(new LinearLayoutManager(context, RecyclerView.HORIZONTAL, false));
 //        msgRightHolder.binding.recliked.setAdapter(comments_adapter);
