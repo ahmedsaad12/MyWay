@@ -45,7 +45,11 @@ public class ChooseCountryActivity extends AppCompatActivity {
         Paper.init(this);
         lang = Paper.book().read("lang", "ar");
         binding.setLang(lang);
-
+        if (preferences.getCountry(this).equals("egypt")) {
+            binding.fr.setChecked(true);
+        } else if (preferences.getCountry(this).equals("saudi")) {
+            binding.fr2.setChecked(true);
+        }
         binding.fr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
