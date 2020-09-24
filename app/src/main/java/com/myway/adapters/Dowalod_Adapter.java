@@ -74,7 +74,9 @@ public class Dowalod_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                         intent.setDataAndType(Uri.parse(file.getPath()), "application/pdf");
                         context.startActivity(intent);
                     } catch (Exception e) {
-
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(file.getPath()));
+                        intent.setDataAndType(Uri.parse(file.getPath()), "application/pdf");
+                        context.startActivity(intent);
                     }
 
                     //Starting the pdf viewer
