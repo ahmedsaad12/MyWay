@@ -206,13 +206,13 @@ public class Fragment_Main extends Fragment {
                 startActivity(intent);
             }
         });
-//        binding.cardset.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(activity, SettingActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        binding.cardset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(activity, SettingActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
