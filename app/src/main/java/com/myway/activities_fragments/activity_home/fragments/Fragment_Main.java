@@ -85,9 +85,7 @@ public class Fragment_Main extends Fragment {
 
                 if (response.isSuccessful() && response.body() != null && response.body().getSlider() != null) {
                     if (response.body().getSlider().size() > 0) {
-                        NUM_PAGES = response.body().getSlider().size();
-                        slidingImage__adapter = new SlidingImage_Adapter(activity, response.body().getSlider());
-                        binding.pager.setAdapter(slidingImage__adapter);
+                    update(response.body());
 
                     } else {
 
@@ -121,6 +119,12 @@ public class Fragment_Main extends Fragment {
             }
         });
 
+    }
+
+    private void update(Slider_Model body) {
+        NUM_PAGES = body.getSlider().size();
+        slidingImage__adapter = new SlidingImage_Adapter(activity, body.getSlider());
+        binding.pager.setAdapter(slidingImage__adapter);
     }
 
     private void change_slide_image() {

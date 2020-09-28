@@ -14,7 +14,7 @@ public interface Listeners {
         void aboutApp();
         void joinMyway();
         void ourpage();
-
+        void work();
 
     }
 }

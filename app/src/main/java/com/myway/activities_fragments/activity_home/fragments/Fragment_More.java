@@ -20,6 +20,7 @@ import com.myway.activities_fragments.activity_about_app.AboutAppActivity;
 import com.myway.activities_fragments.activity_choose_country.ChooseCountryActivity;
 import com.myway.activities_fragments.activity_contact_us.ContactUsActivity;
 import com.myway.activities_fragments.activity_home.HomeActivity;
+import com.myway.activities_fragments.activity_setting.SettingActivity;
 import com.myway.activities_fragments.activityjoinmyway.JoinMyWayActivity;
 import com.myway.databinding.FragmentMoreBinding;
 import com.myway.interfaces.Listeners;
@@ -109,6 +110,12 @@ public class Fragment_More extends Fragment implements Listeners.SettingActions 
     @Override
     public void ourpage() {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www."+facebook));
+        startActivity(intent);
+    }
+
+    @Override
+    public void work() {
+        Intent intent = new Intent(activity, SettingActivity.class);
         startActivity(intent);
     }
 
