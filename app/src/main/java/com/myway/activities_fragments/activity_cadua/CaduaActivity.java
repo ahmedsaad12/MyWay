@@ -74,7 +74,7 @@ public class CaduaActivity extends AppCompatActivity implements Listeners.BackLi
 
 
                     int num = Integer.parseInt(binding.edtcadua.getText().toString());
-                    int level = 0;
+                    double level = 0;
                     if (num >= 200 && num <= 599) {
                         level = 3;
                     } else if (num >= 600 && num <= 1199) {
