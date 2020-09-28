@@ -97,9 +97,9 @@ public class CaduaActivity extends AppCompatActivity implements Listeners.BackLi
 
                     }
                     if (preferences.getCountry(CaduaActivity.this).equals("saudi")) {
-                        binding.tvresult.setText((num * level * 1.4) + getResources().getString(R.string.r));
+                        binding.tvresult.setText((num * (level/100) * 1.4) + getResources().getString(R.string.r));
                     } else {
-                        binding.tvresult.setText((num * level * 1.4) + getResources().getString(R.string._20_geneh));
+                        binding.tvresult.setText((num * (level/100) * 1.4) + getResources().getString(R.string._20_geneh));
 
                     }
                 } catch (Exception e) {
