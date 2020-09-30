@@ -40,7 +40,7 @@
             <FrameLayout
                 android:id="@+id/flSlider"
                 android:layout_width="match_parent"
-                android:layout_height="200dp">
+                android:layout_height="300dp">
 
                 <androidx.viewpager.widget.ViewPager
                     android:id="@+id/pager"
@@ -111,11 +111,13 @@
                             android:textSize="15sp"
                             android:textStyle="bold" />
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
                             android:layout_gravity="center"
                             android:clickable="false"
                             android:longClickable="false"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginLeft="5dp"
                             android:tint="@color/white"
                             android:src="@drawable/ic_shopping_cart" />
                     </LinearLayout>
@@ -157,14 +159,16 @@
                             android:layout_weight="1"
                             android:textStyle="bold" />
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
                             android:layout_gravity="center"
                             android:clickable="false"
                             android:longClickable="false"
                             android:src="@drawable/ic_arrow"
-                            android:rotation="90"
+                            android:rotation='@{lang.equals("en")?90:-90}'
                             android:tint="@color/white"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginLeft="5dp"
                             />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -203,7 +207,7 @@
 
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginStart="5dp"
@@ -211,16 +215,19 @@
                             android:gravity="center"
                             android:longClickable="false"
                             android:text="@string/catalouge"
+                            android:layout_weight="1"
                             android:textColor="@color/white"
                             android:textSize="15sp"
                             android:textStyle="bold" />
                         <ImageView
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
                             android:layout_gravity="center"
                             android:clickable="false"
                             android:longClickable="false"
-                            android:src="@drawable/cataloug" />
+                            android:layout_marginRight="5dp"
+                            android:layout_marginLeft="5dp"
+                            android:src="@drawable/ic_catlog" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -247,7 +254,7 @@
 
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginStart="5dp"
@@ -257,14 +264,18 @@
                             android:text="@string/cadua"
                             android:textColor="@color/white"
                             android:textSize="15sp"
+                            android:layout_weight="1"
                             android:textStyle="bold" />
                         <ImageView
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
                             android:layout_gravity="center"
                             android:clickable="false"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginLeft="5dp"
+                            android:tint="@color/white"
                             android:longClickable="false"
-                            android:src="@drawable/surprice" />
+                            android:src="@drawable/ic_money_bag" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -302,7 +313,7 @@
 
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginStart="5dp"
@@ -312,14 +323,17 @@
                             android:text="@string/offers"
                             android:textColor="@color/white"
                             android:textSize="15sp"
+                            android:layout_weight="1"
                             android:textStyle="bold" />
                         <ImageView
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
                             android:layout_gravity="center"
                             android:clickable="false"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginLeft="5dp"
                             android:longClickable="false"
-                            android:src="@drawable/offer" />
+                            android:src="@drawable/ic_fill_heart" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -355,7 +369,7 @@
 
 
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginStart="5dp"
@@ -363,16 +377,20 @@
                                 android:gravity="center"
                                 android:longClickable="false"
                                 android:text="@string/contact_us"
+                                android:layout_weight="1"
                                 android:textColor="@color/white"
                                 android:textSize="15sp"
                                 android:textStyle="bold" />
                             <ImageView
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
                                 android:layout_gravity="center"
                                 android:clickable="false"
+                                android:tint="@color/white"
                                 android:longClickable="false"
-                                android:src="@drawable/contact" />
+                                android:layout_marginRight="5dp"
+                                android:layout_marginLeft="5dp"
+                                android:src="@drawable/ic_chat" />
                         </LinearLayout>
                     </FrameLayout>
 
@@ -473,18 +491,6 @@
                             android:longClickable="false"
                             android:visibility="gone" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="5dp"
-                            android:clickable="false"
-                            android:gravity="center"
-                            android:longClickable="false"
-                            android:text="@string/join_my_way_company"
-                            android:textColor="@color/white"
-                            android:textSize="15sp"
-                            android:textStyle="bold" />
 
 
                     </LinearLayout>
@@ -495,6 +501,21 @@
                         android:alpha=".2">
 
                     </FrameLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:clickable="false"
+                        android:gravity="center"
+
+                        android:longClickable="false"
+                        android:text="@string/join_my_way_company"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
                 </androidx.cardview.widget.CardView>
 
             </LinearLayout>
