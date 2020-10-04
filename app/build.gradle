@@ -8,8 +8,8 @@ android {
         applicationId "com.myway"
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode 2
-        versionName "1.1"
+        versionCode 3
+        versionName "1.2"
         multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -79,7 +79,7 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     implementation 'com.daimajia.androidanimations:library:2.3@aar'
     implementation 'com.github.devlight:infinitecycleviewpager:1.0.2'
-
+    implementation 'com.github.chathuralakmal:AndroidImagePopup:1.2.2'
 
 
 }

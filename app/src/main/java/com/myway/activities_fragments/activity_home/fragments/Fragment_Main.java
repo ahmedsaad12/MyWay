@@ -30,7 +30,6 @@ import com.myway.activities_fragments.activity_offers.OffersActivity;
 import com.myway.activities_fragments.activity_product.ProductActivity;
 import com.myway.activities_fragments.activity_setting.SettingActivity;
 import com.myway.activities_fragments.activityjoinmyway.JoinMyWayActivity;
-import com.myway.adapters.Product_Adapter;
 import com.myway.adapters.SlidingImage_Adapter;
 import com.myway.databinding.FragmnetMainBinding;
 import com.myway.models.Slider_Model;

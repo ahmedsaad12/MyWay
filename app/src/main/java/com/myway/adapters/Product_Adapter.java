@@ -2,7 +2,9 @@ package com.myway.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -10,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.myway.R;
+import com.myway.activities_fragments.activity_product.ProductActivity;
 import com.myway.databinding.ProductRowBinding;
 import com.myway.models.SingleProductModel;
 
@@ -51,6 +54,13 @@ public class Product_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         EventsHolder msgRightHolder = (EventsHolder) holder;
         msgRightHolder.binding.setModel(orderlist.get(position));
+        msgRightHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ProductActivity productActivity=(ProductActivity)context;
+                productActivity.showimage(orderlist.get(position).getImage());
+            }
+        });
 //        Liked_Adapter comments_adapter = new Liked_Adapter(orderlist, context);
 //        msgRightHolder.binding.recliked.setLayoutManager(new LinearLayoutManager(context, RecyclerView.HORIZONTAL, false));
 //        msgRightHolder.binding.recliked.setAdapter(comments_adapter);

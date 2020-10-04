@@ -1,6 +1,7 @@
 package com.myway.activities_fragments.activity_product;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,6 +11,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 
+import com.ceylonlabs.imageviewpopup.ImagePopup;
 import com.myway.R;
 import com.myway.adapters.Product_Adapter;
 import com.myway.databinding.ActivityProductsBinding;
@@ -38,6 +40,7 @@ public class ProductActivity extends AppCompatActivity implements Listeners.Back
 
     private List<SingleProductModel> dataList;
     private Product_Adapter food_adapter;
+    ImagePopup imagePopup;
 
     protected void attachBaseContext(Context newBase) {
         Paper.init(newBase);
@@ -53,6 +56,14 @@ public class ProductActivity extends AppCompatActivity implements Listeners.Back
     }
 
     private void initView() {
+        imagePopup = new ImagePopup(this);
+        imagePopup.setWindowHeight(800); // Optional
+        imagePopup.setWindowWidth(800); // Optional
+        imagePopup.setBackgroundColor(Color.BLACK);  // Optional
+        imagePopup.setFullScreen(true); // Optional
+        imagePopup.setImageOnClickClose(true);  // Optional
+
+
         preferences = Preferences.getInstance();
         dataList = new ArrayList<>();
 
@@ -142,5 +153,11 @@ public class ProductActivity extends AppCompatActivity implements Listeners.Back
     @Override
     public void back() {
         finish();
+    }
+
+    public void showimage(String image) {
+        imagePopup.initiatePopupWithPicasso(Tags.IMAGE_URL+image);
+        imagePopup.viewPopup();
+
     }
 }
