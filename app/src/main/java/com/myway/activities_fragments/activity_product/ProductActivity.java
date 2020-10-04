@@ -61,6 +61,7 @@ public class ProductActivity extends AppCompatActivity implements Listeners.Back
         imagePopup.setWindowWidth(800); // Optional
         imagePopup.setBackgroundColor(Color.BLACK);  // Optional
         imagePopup.setFullScreen(true); // Optional
+        imagePopup.setHideCloseIcon(false);
         imagePopup.setImageOnClickClose(true);  // Optional
 
 
