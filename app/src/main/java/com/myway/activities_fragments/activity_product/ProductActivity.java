@@ -1,5 +1,6 @@
 package com.myway.activities_fragments.activity_product;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -57,8 +58,7 @@ public class ProductActivity extends AppCompatActivity implements Listeners.Back
 
     private void initView() {
         imagePopup = new ImagePopup(this);
-        imagePopup.setWindowHeight(800); // Optional
-        imagePopup.setWindowWidth(800); // Optional
+        imagePopup.setFullScreen(true);
         imagePopup.setBackgroundColor(Color.BLACK);  // Optional
         imagePopup.setFullScreen(true); // Optional
         imagePopup.setHideCloseIcon(false);
