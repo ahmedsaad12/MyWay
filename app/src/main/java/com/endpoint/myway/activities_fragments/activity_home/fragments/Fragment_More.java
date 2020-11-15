@@ -114,7 +114,7 @@ public class Fragment_More extends Fragment implements Listeners.SettingActions 
 
     @Override
     public void work() {
-        Intent intent = new Intent(activity, SettingActivity.class);
+        Intent intent = new Intent(activity, ContactUsActivity.class);
         startActivity(intent);
     }
 

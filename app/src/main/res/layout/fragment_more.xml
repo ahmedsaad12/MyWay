@@ -246,7 +246,7 @@
                         android:textSize="15sp"
                         android:clickable="false"
                         android:longClickable="false"
-                        android:text="@string/work_setting"
+                        android:text="@string/contact_us"
                         />
                     <ImageView
                         android:layout_width="20dp"

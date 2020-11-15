@@ -172,13 +172,13 @@ public class Fragment_Main extends Fragment {
                 startActivity(intent);
             }
         });
-        binding.cardcontactus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(activity, ContactUsActivity.class);
-                startActivity(intent);
-            }
-        });
+//        binding.cardcontactus.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(activity, ContactUsActivity.class);
+//                startActivity(intent);
+//            }
+//        });
         binding.cardjoin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
