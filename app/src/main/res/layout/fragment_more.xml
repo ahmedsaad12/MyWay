@@ -9,10 +9,10 @@
         <data>
             <variable
                 name="backListener"
-                type="com.myway.interfaces.Listeners.BackListener" />
+                type="com.endpoint.myway.interfaces.Listeners.BackListener" />
             <variable
                 name="action"
-                type="com.myway.interfaces.Listeners.SettingActions" />
+                type="com.endpoint.myway.interfaces.Listeners.SettingActions" />
             <variable
                 name="lang"
                 type="String" />

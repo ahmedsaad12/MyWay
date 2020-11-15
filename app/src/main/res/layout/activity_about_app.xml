@@ -6,7 +6,7 @@
     <data>
         <variable
             name="backListener"
-            type="com.myway.interfaces.Listeners.BackListener" />
+            type="com.endpoint.myway.interfaces.Listeners.BackListener" />
         <variable
             name="lang"
             type="String" />

@@ -5,7 +5,7 @@
     <data>
         <variable
             name="model"
-            type="com.myway.models.SingleCatalougModel" />
+            type="com.endpoint.myway.models.SingleCatalougModel" />
     </data>
 
     <androidx.cardview.widget.CardView
