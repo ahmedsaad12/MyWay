@@ -93,7 +93,7 @@ public class Cataloug_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         }
         Dialog dialog = new PopopDialogBuilder(context)
                 // Set list like as option1 or option2 or option3
-                .setList(list, 0)
+                .setList(list,list.size())
                 // or setList with initial position that like .setList(list,position)
                 // Set dialog header color
                 .setHeaderBackgroundColor(android.R.color.holo_blue_light)
@@ -113,6 +113,7 @@ public class Cataloug_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 // .setSelectorIndicator(R.drawable.sample_indicator_selector)
                 // Enable or disable zoomable
                 .setIsZoomable(true)
+
                 // Build Km Slider Popup Dialog
                 .build();
         dialog.show();
