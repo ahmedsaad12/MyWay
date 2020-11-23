@@ -1,5 +1,6 @@
 package com.endpoint.myway.adapters;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,9 +23,11 @@ import com.endpoint.myway.databinding.OffersRowBinding;
 import com.endpoint.myway.models.FileDownloader;
 import com.endpoint.myway.models.SingleCatalougModel;
 import com.endpoint.myway.tags.Tags;
+import com.kodmap.app.library.PopopDialogBuilder;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -65,20 +69,53 @@ public class Cataloug_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         msgRightHolder.binding.tvshow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showfile(orderlist.get(msgRightHolder.getLayoutPosition()).getFile());
+                //     showfile(orderlist.get(msgRightHolder.getLayoutPosition()).getFile());
+                showfiles(orderlist.get(msgRightHolder.getLayoutPosition()).getImages());
             }
         });
         msgRightHolder.binding.btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.e("kkkkk", orderlist.get(msgRightHolder.getLayoutPosition()).getFile());
-                new DownloadFile().execute(Tags.base_url+orderlist.get(msgRightHolder.getLayoutPosition()).getFile(),orderlist.get(msgRightHolder.getLayoutPosition()).getFile().split("/")[3]);
+                new DownloadFile().execute(Tags.base_url + orderlist.get(msgRightHolder.getLayoutPosition()).getFile(), orderlist.get(msgRightHolder.getLayoutPosition()).getFile().split("/")[3]);
             }
         });
 //        Liked_Adapter comments_adapter = new Liked_Adapter(orderlist, context);
 //        msgRightHolder.binding.recliked.setLayoutManager(new LinearLayoutManager(context, RecyclerView.HORIZONTAL, false));
 //        msgRightHolder.binding.recliked.setAdapter(comments_adapter);
 
+    }
+
+    private void showfiles(List<SingleCatalougModel.Images> images) {
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < images.size(); i++) {
+            list.add(Tags.IMAGE_URL + images.get(i).getImage());
+        }
+        Dialog dialog = new PopopDialogBuilder(context)
+                // Set list like as option1 or option2 or option3
+                .setList(list, 0)
+                // or setList with initial position that like .setList(list,position)
+                // Set dialog header color
+                .setHeaderBackgroundColor(android.R.color.holo_blue_light)
+                // Set dialog background color
+                .setDialogBackgroundColor(R.color.color_dialog_bg)
+                // Set close icon drawable
+                .setCloseDrawable(R.drawable.ic_close_white_24dp)
+                // Set loading view for pager image and preview image
+                .setLoadingView(R.layout.loading_view)
+                // Set dialog style
+                .setDialogStyle(R.style.DialogStyle)
+                // Choose selector type, indicator or thumbnail
+                .showThumbSlider(true)
+                // Set image scale type for slider image
+                .setSliderImageScaleType(ImageView.ScaleType.FIT_XY)
+                // Set indicator drawable
+                // .setSelectorIndicator(R.drawable.sample_indicator_selector)
+                // Enable or disable zoomable
+                .setIsZoomable(true)
+                // Build Km Slider Popup Dialog
+                .build();
+        dialog.show();
     }
 
     private void showfile(String file) {
@@ -104,28 +141,29 @@ public class Cataloug_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         }
     }
 
-    private class DownloadFile extends AsyncTask<String, Void, Void>{
+    private class DownloadFile extends AsyncTask<String, Void, Void> {
 
         @Override
         protected Void doInBackground(String... strings) {
 
             String fileUrl = strings[0];   // -> http://maven.apache.org/maven-1.x/maven.pdf
             String fileName = strings[1];  // -> maven.pdf
-            String extStorageDirectory = Environment.getExternalStorageDirectory().toString()+"/foldr";
+            String extStorageDirectory = Environment.getExternalStorageDirectory().toString() + "/foldr";
             File folder = new File(extStorageDirectory);
             folder.mkdirs();
 
             File pdfFile = new File(folder, fileName);
 
-            try{
+            try {
                 pdfFile.createNewFile();
-            }catch (IOException e){
-               Log.e("lll",e.toString());
+            } catch (IOException e) {
+                Log.e("lll", e.toString());
             }
             FileDownloader.downloadFile(fileUrl, pdfFile);
 
             return null;
         }
+
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
@@ -134,8 +172,6 @@ public class Cataloug_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             Log.e("Download complete", "----------");
         }
     }
-
-
 
 
 }

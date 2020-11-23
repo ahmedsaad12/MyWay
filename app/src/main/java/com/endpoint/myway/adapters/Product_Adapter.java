@@ -1,6 +1,7 @@
 package com.endpoint.myway.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.endpoint.myway.R;
+import com.endpoint.myway.activities_fragments.activity_detilas.DetialsActivity;
 import com.endpoint.myway.activities_fragments.activity_product.ProductActivity;
+import com.endpoint.myway.activities_fragments.activity_product_detilas.ProductDetialsActivity;
 import com.endpoint.myway.databinding.ProductRowBinding;
 import com.endpoint.myway.models.SingleProductModel;
 
@@ -58,6 +61,19 @@ public class Product_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             public void onClick(View view) {
                 ProductActivity productActivity=(ProductActivity)context;
                 productActivity.showimage(orderlist.get(position).getImage());
+            }
+        });
+        msgRightHolder.binding.tvread.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(context, ProductDetialsActivity.class);
+                intent.putExtra("title",  orderlist.get(msgRightHolder.getLayoutPosition()).getTitle()+"");
+                intent.putExtra("content",  orderlist.get(msgRightHolder.getLayoutPosition()).getDetails()+"");
+                intent.putExtra("price",  orderlist.get(msgRightHolder.getLayoutPosition()).getPrice()+"");
+
+                intent.putExtra("image",  orderlist.get(msgRightHolder.getLayoutPosition()).getImage()+"");
+
+                context.startActivity(intent);
             }
         });
 //        Liked_Adapter comments_adapter = new Liked_Adapter(orderlist, context);
