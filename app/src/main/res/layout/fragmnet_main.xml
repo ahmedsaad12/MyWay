@@ -484,29 +484,31 @@
                         android:orientation="horizontal"
                         tools:ignore="RtlCompat">
 
-                        <ImageView
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:layout_gravity="center"
-                            android:clickable="false"
-                            android:longClickable="false"
-                            android:visibility="gone" />
+
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:alpha=".5"
+    android:layout_gravity="bottom"
+
+    android:background="@color/black"
+    >
+
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
                             android:layout_marginStart="5dp"
                             android:layout_marginEnd="5dp"
                             android:clickable="false"
-                            android:gravity="center"
 
+                            android:gravity="center"
                             android:longClickable="false"
                             android:text="@string/join_my_way_company"
-                            android:textColor="@color/toolbar"
+                            android:textColor="@color/white"
                             android:textSize="20sp"
                             android:textStyle="bold" />
-
+</FrameLayout>
 
                     </LinearLayout>
                     <FrameLayout
