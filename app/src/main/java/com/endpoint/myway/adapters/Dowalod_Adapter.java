@@ -64,7 +64,7 @@ public class Dowalod_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                     // Uri photoURI = FileProvider.getUriForFile(context, context.getApplicationContext().getPackageName() + ".provider",file);
                     try {
                         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.fromFile(file));
-                        intent.setDataAndType(Uri.parse(file.getPath()), "application/pdf");
+                        intent.setDataAndType(Uri.fromFile(file), "application/pdf");
                         context.startActivity(intent);
                     } catch (Exception e) {
                         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(file.getPath()));
