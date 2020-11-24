@@ -108,7 +108,7 @@ public class Cataloug_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 // Choose selector type, indicator or thumbnail
                 .showThumbSlider(true)
                 // Set image scale type for slider image
-                .setSliderImageScaleType(ImageView.ScaleType.FIT_XY)
+                .setSliderImageScaleType(ImageView.ScaleType.FIT_CENTER)
                 // Set indicator drawable
                 // .setSelectorIndicator(R.drawable.sample_indicator_selector)
                 // Enable or disable zoomable
