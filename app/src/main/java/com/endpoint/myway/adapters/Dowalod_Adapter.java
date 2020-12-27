@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.FileProvider;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,6 +21,7 @@ import com.endpoint.myway.databinding.NewsRowBinding;
 import java.io.File;
 import java.util.Locale;
 
+import io.paperdb.BuildConfig;
 import io.paperdb.Paper;
 
 public class Dowalod_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -64,11 +66,11 @@ public class Dowalod_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                     // Uri photoURI = FileProvider.getUriForFile(context, context.getApplicationContext().getPackageName() + ".provider",file);
                     try {
                         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.fromFile(file));
-                        intent.setDataAndType(Uri.fromFile(file), "application/pdf");
+                        intent.setDataAndType(FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".provider",file), "application/pdf");
                         context.startActivity(intent);
                     } catch (Exception e) {
                         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(file.getPath()));
-                        intent.setDataAndType(Uri.parse(file.getPath()), "application/pdf");
+                        intent.setDataAndType(FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".provider",file), "application/pdf");
                         context.startActivity(intent);
                     }
 
